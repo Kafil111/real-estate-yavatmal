@@ -1,0 +1,29 @@
+@import "tailwindcss";
+
+:root {
+
+  /* ========= Brand Colors ========= */
+
+  --brand-bg: #07111F;
+  --brand-surface: #101A2A;
+  --brand-surface-light: #18273D;
+
+  --brand-gold: #F5B301;
+  --brand-gold-hover: #FFD04D;
+
+  --brand-success: #22C55E;
+  --brand-danger: #EF4444;
+
+  --brand-white: #F8FAFC;
+  --brand-muted: #94A3B8;
+
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--brand-bg);
+  color: var(--brand-white);
+}
