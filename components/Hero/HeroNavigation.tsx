@@ -21,6 +21,8 @@ export default function HeroNavigation({
                 aria-label="Previous Slide"
                 onClick={onPrev}
                 className="
+                    hidden
+                    sm:flex
                     absolute
                     left-3
                     sm:left-4
@@ -28,7 +30,6 @@ export default function HeroNavigation({
                     top-1/2
                     -translate-y-1/2
                     z-50
-                    flex
                     h-12
                     w-12
                     items-center
@@ -50,13 +51,14 @@ export default function HeroNavigation({
             >
                 ❮
             </button>
-
             {/* Next */}
             <button
                 type="button"
                 aria-label="Next Slide"
                 onClick={onNext}
                 className="
+                    hidden
+                    sm:flex
                     absolute
                     right-3
                     sm:right-4
@@ -64,7 +66,6 @@ export default function HeroNavigation({
                     top-1/2
                     -translate-y-1/2
                     z-50
-                    flex
                     h-12
                     w-12
                     items-center

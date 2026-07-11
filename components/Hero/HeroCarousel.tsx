@@ -159,10 +159,6 @@ export default function HeroCarousel() {
             <p className="sr-only" aria-live="polite">
                 Slide {current + 1} of {heroSlides.length}: {heroSlides[current]?.title}
             </p>
-
-            <p className="absolute left-3 top-24 z-[60] rounded bg-slate-950/70 px-2 py-1 text-[10px] font-semibold uppercase tracking-wider text-amber-300">
-                {isClientReady ? "Interactive" : "Connecting"}
-            </p>
         </section>
     );
 }
