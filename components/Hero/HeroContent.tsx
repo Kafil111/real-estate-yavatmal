@@ -34,7 +34,7 @@ export default function HeroContent({
 
                 {/* Buttons */}
 
-                <div className="mt-8 flex flex-col gap-4 sm:flex-row">
+                <div className="mt-8 flex flex-col gap-2 sm:flex-row">
 
                     <Button href="#properties">
                         Explore Properties
@@ -51,7 +51,7 @@ export default function HeroContent({
 
                 {/* Stats */}
 
-                <div className="mt-10 grid grid-cols-3 gap-3 sm:gap-5">
+                <div className="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-5">
 
                     <StatCard
                         value="500+"
@@ -66,6 +66,7 @@ export default function HeroContent({
                     <StatCard
                         value="24/7"
                         label="Support"
+                        className="hidden sm:block"
                     />
 
                 </div>
