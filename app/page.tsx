@@ -1,3 +1,7 @@
+"use client";
+
+import { useState } from "react";
+
 import Navbar from "@/components/Layout/Navbar";
 import Hero from "@/components/Hero/Hero";
 import SearchSection from "@/components/Home/SearchSection";
@@ -12,21 +16,42 @@ import ContactSection from "@/components/Home/ContactSection";
 import FloatingButtons from "@/components/Layout/FloatingButtons";
 import Footer from "@/components/Layout/Footer";
 
+import { SearchFilters } from "@/hooks/usePropertyFilters";
+
 export default function Home() {
+  const [filters, setFilters] = useState<SearchFilters>({
+    location: "",
+    type: "",
+    budget: "",
+    area: "",
+  });
+
   return (
     <>
       <Navbar />
+
       <Hero />
-      <SearchSection />
-      <FeaturedProperties />
+
+      <SearchSection onSearch={setFilters} />
+
+      <FeaturedProperties filters={filters} />
+
       <WhyChooseUs />
+
       <StatsSection />
+
       <ServicesSection />
+
       <Testimonials />
+
       <FAQ />
+
       <ContactSection />
+
       <CTASection />
+
       <Footer />
+
       <FloatingButtons />
     </>
   );

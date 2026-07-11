@@ -44,6 +44,8 @@ export const properties: Property[] = [
 
         description:
             "Beautiful low budget agricultural land located near Babulgaon. Excellent investment opportunity.",
+        mapUrl:
+            "https://www.google.com/maps?q=Yavatmal&output=embed",
 
         distances: {
             Yavatmal: "22 km",
@@ -99,6 +101,8 @@ export const properties: Property[] = [
 
         description:
             "Highway touch agricultural land with huge appreciation potential.",
+        mapUrl:
+            "https://www.google.com/maps?q=Yavatmal&output=embed",
 
         distances: {
             Yavatmal: "18 km",
@@ -154,7 +158,8 @@ export const properties: Property[] = [
 
         description:
             "Premium residential plot inside a fast-growing locality of Yavatmal.",
-
+        mapUrl:
+            "https://www.google.com/maps?q=Yavatmal&output=embed",
         distances: {
             BusStand: "3 km",
             Railway: "5 km",
@@ -209,6 +214,8 @@ export const properties: Property[] = [
 
         description:
             "Commercial investment plot suitable for showroom, warehouse or business.",
+        mapUrl:
+            "https://www.google.com/maps?q=Yavatmal&output=embed",
 
         distances: {
             Highway: "0 km",
@@ -263,6 +270,8 @@ export const properties: Property[] = [
 
         description:
             "Premium agricultural land suitable for farming and long-term investment.",
+        mapUrl:
+            "https://www.google.com/maps?q=Yavatmal&output=embed",
 
         distances: {
             Arni: "12 km",
@@ -317,6 +326,8 @@ export const properties: Property[] = [
 
         description:
             "Affordable residential plot suitable for first-time buyers.",
+        mapUrl:
+            "https://www.google.com/maps?q=Yavatmal&output=embed",
 
         distances: {
             Babulgaon: "2 km",

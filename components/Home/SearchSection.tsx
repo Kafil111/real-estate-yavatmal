@@ -1,5 +1,7 @@
 "use client";
 
+import { useState } from "react";
+
 import {
     Search,
     MapPin,
@@ -8,17 +10,39 @@ import {
     Ruler,
 } from "lucide-react";
 
-export default function SearchSection() {
-    return (
-        <section className="relative z-30 px-6 pt-8 pb-12">
+import { SearchFilters } from "@/hooks/usePropertyFilters";
 
+type Props = {
+    onSearch: (filters: SearchFilters) => void;
+};
+
+export default function SearchSection({ onSearch }: Props) {
+    const [filters, setFilters] = useState<SearchFilters>({
+        location: "",
+        type: "",
+        budget: "",
+        area: "",
+    });
+
+    function updateField(
+        key: keyof SearchFilters,
+        value: string
+    ) {
+        setFilters((prev) => ({
+            ...prev,
+            [key]: value,
+        }));
+    }
+
+    return (
+        <section className="relative z-30 px-6 pt-12 pb-20">
             <div className="mx-auto max-w-7xl">
 
-                <div className="rounded-3xl border border-white/10 bg-slate-900/90 backdrop-blur-xl shadow-2xl p-8">
+                <div className="rounded-3xl border border-white/10 bg-slate-900/90 p-8 shadow-2xl backdrop-blur-xl">
 
                     <div className="mb-8">
 
-                        <p className="text-sm uppercase tracking-[0.3em] text-amber-400 font-bold">
+                        <p className="text-sm font-bold uppercase tracking-[0.3em] text-amber-400">
                             PROPERTY SEARCH
                         </p>
 
@@ -41,8 +65,12 @@ export default function SearchSection() {
                             </label>
 
                             <input
+                                value={filters.location}
+                                onChange={(e) =>
+                                    updateField("location", e.target.value)
+                                }
                                 placeholder="Yavatmal"
-                                className="w-full bg-transparent outline-none text-white placeholder:text-slate-500"
+                                className="w-full bg-transparent text-white outline-none placeholder:text-slate-500"
                             />
 
                         </div>
@@ -57,17 +85,36 @@ export default function SearchSection() {
 
                             </label>
 
-                            <select className="w-full bg-transparent text-white outline-none">
+                            <select
+                                value={filters.type}
+                                onChange={(e) =>
+                                    updateField("type", e.target.value)
+                                }
+                                className="w-full bg-transparent text-white outline-none"
+                            >
 
-                                <option className="bg-slate-900">
+                                <option value="" className="bg-slate-900">
+                                    All
+                                </option>
+
+                                <option
+                                    value="Agricultural Land"
+                                    className="bg-slate-900"
+                                >
                                     Agricultural
                                 </option>
 
-                                <option className="bg-slate-900">
+                                <option
+                                    value="Residential"
+                                    className="bg-slate-900"
+                                >
                                     Residential
                                 </option>
 
-                                <option className="bg-slate-900">
+                                <option
+                                    value="Commercial"
+                                    className="bg-slate-900"
+                                >
                                     Commercial
                                 </option>
 
@@ -86,8 +133,12 @@ export default function SearchSection() {
                             </label>
 
                             <input
-                                placeholder="₹10 Lakh"
-                                className="w-full bg-transparent outline-none text-white placeholder:text-slate-500"
+                                value={filters.budget}
+                                onChange={(e) =>
+                                    updateField("budget", e.target.value)
+                                }
+                                placeholder="₹45 Lakh"
+                                className="w-full bg-transparent text-white outline-none placeholder:text-slate-500"
                             />
 
                         </div>
@@ -103,13 +154,20 @@ export default function SearchSection() {
                             </label>
 
                             <input
+                                value={filters.area}
+                                onChange={(e) =>
+                                    updateField("area", e.target.value)
+                                }
                                 placeholder="5 Acre"
-                                className="w-full bg-transparent outline-none text-white placeholder:text-slate-500"
+                                className="w-full bg-transparent text-white outline-none placeholder:text-slate-500"
                             />
 
                         </div>
 
-                        <button className="flex items-center justify-center gap-3 rounded-2xl bg-amber-400 font-bold text-slate-900 transition hover:scale-105">
+                        <button
+                            onClick={() => onSearch(filters)}
+                            className="flex items-center justify-center gap-3 rounded-2xl bg-amber-400 font-bold text-slate-900 transition hover:scale-105"
+                        >
 
                             <Search size={20} />
 
@@ -119,31 +177,9 @@ export default function SearchSection() {
 
                     </div>
 
-                    <div className="mt-8 flex flex-wrap gap-3">
-
-                        {[
-                            "Agricultural",
-                            "Residential",
-                            "Commercial",
-                            "Road Touch",
-                            "Low Budget",
-                        ].map((item) => (
-
-                            <button
-                                key={item}
-                                className="rounded-full border border-white/10 px-5 py-2 text-sm text-slate-300 transition hover:border-amber-400 hover:text-amber-400"
-                            >
-                                {item}
-                            </button>
-
-                        ))}
-
-                    </div>
-
                 </div>
 
             </div>
-
         </section>
     );
 }

@@ -1,18 +1,34 @@
 "use client";
 
 import { ArrowRight } from "lucide-react";
+
 import PropertyCard from "@/components/Property/PropertyCard";
+
 import { properties } from "@/data/properties";
 
-export default function FeaturedProperties() {
+import {
+    SearchFilters,
+    usePropertyFilters,
+} from "../../hooks/usePropertyFilters";
+
+type Props = {
+    filters: SearchFilters;
+};
+
+export default function FeaturedProperties({
+    filters,
+}: Props) {
+    const filteredProperties = usePropertyFilters(
+        properties,
+        filters
+    );
+
     return (
         <section
             id="properties"
             className="bg-[#030817] py-24"
         >
             <div className="mx-auto max-w-7xl px-6">
-
-                {/* Heading */}
 
                 <div className="mx-auto mb-16 max-w-3xl text-center">
 
@@ -31,44 +47,42 @@ export default function FeaturedProperties() {
 
                 </div>
 
-                {/* Filter Pills */}
+                <div className="mb-10">
 
-                <div className="mb-12 flex flex-wrap justify-center gap-4">
+                    <p className="text-center text-slate-400">
 
-                    <button className="rounded-full bg-amber-400 px-6 py-3 font-semibold text-slate-900 transition hover:scale-105">
-                        All
-                    </button>
+                        {filteredProperties.length} Properties Found
 
-                    <button className="rounded-full border border-white/10 bg-slate-900 px-6 py-3 text-white transition hover:border-amber-400 hover:text-amber-400">
-                        Agricultural
-                    </button>
-
-                    <button className="rounded-full border border-white/10 bg-slate-900 px-6 py-3 text-white transition hover:border-amber-400 hover:text-amber-400">
-                        Residential
-                    </button>
-
-                    <button className="rounded-full border border-white/10 bg-slate-900 px-6 py-3 text-white transition hover:border-amber-400 hover:text-amber-400">
-                        Commercial
-                    </button>
+                    </p>
 
                 </div>
 
-                {/* Cards */}
+                {filteredProperties.length === 0 ? (
+                    <div className="rounded-3xl border border-white/10 bg-slate-900 p-20 text-center">
 
-                <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-3">
+                        <h3 className="text-3xl font-bold text-white">
+                            No Properties Found
+                        </h3>
 
-                    {properties.map((property) => (
+                        <p className="mt-4 text-slate-400">
+                            Try changing your search filters.
+                        </p>
 
-                        <PropertyCard
-                            key={property.id}
-                            property={property}
-                        />
+                    </div>
+                ) : (
+                    <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-3">
 
-                    ))}
+                        {filteredProperties.map((property) => (
 
-                </div>
+                            <PropertyCard
+                                key={property.id}
+                                property={property}
+                            />
 
-                {/* View All */}
+                        ))}
+
+                    </div>
+                )}
 
                 <div className="mt-16 text-center">
 

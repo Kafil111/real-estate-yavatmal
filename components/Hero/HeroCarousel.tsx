@@ -1,87 +1,174 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import Image from "next/image";
+import { useCallback, useEffect, useRef, useState } from "react";
+import type { KeyboardEvent, TouchEvent } from "react";
+
+import { heroSlides } from "@/data/heroSlides";
 
 import HeroContent from "./HeroContent";
 import HeroNavigation from "./HeroNavigation";
 
-import { heroSlides } from "@/data/heroSlides";
+const AUTOPLAY_DELAY = 6000;
+const SWIPE_THRESHOLD = 50;
 
 export default function HeroCarousel() {
     const [current, setCurrent] = useState(0);
+    const [isPaused, setIsPaused] = useState(false);
+    const isTransitioningRef = useRef(false);
+    const [isClientReady, setIsClientReady] = useState(false);
+    const touchStartX = useRef<number | null>(null);
 
     useEffect(() => {
-        const interval = setInterval(() => {
-            setCurrent((prev) =>
-                prev === heroSlides.length - 1 ? 0 : prev + 1
-            );
-        }, 6000);
-
-        return () => clearInterval(interval);
+        setIsClientReady(true);
     }, []);
 
-    const nextSlide = () => {
-        setCurrent((prev) =>
-            prev === heroSlides.length - 1 ? 0 : prev + 1
-        );
-    };
+    const goToSlide = useCallback((index: number) => {
+        if (isTransitioningRef.current) return;
+        isTransitioningRef.current = true;
 
-    const prevSlide = () => {
-        setCurrent((prev) =>
-            prev === 0 ? heroSlides.length - 1 : prev - 1
+        const total = heroSlides.length;
+        setCurrent(((index % total) + total) % total);
+    }, []);
+
+    const nextSlide = useCallback(() => {
+        if (isTransitioningRef.current) return;
+        isTransitioningRef.current = true;
+
+        setCurrent((index) => (index + 1) % heroSlides.length);
+    }, []);
+
+    const prevSlide = useCallback(() => {
+        if (isTransitioningRef.current) return;
+        isTransitioningRef.current = true;
+
+        setCurrent((index) =>
+            index === 0 ? heroSlides.length - 1 : index - 1
         );
-    };
+    }, []);
+
+    useEffect(() => {
+        if (isPaused || heroSlides.length < 2) {
+            return;
+        }
+
+        const interval = window.setInterval(nextSlide, AUTOPLAY_DELAY);
+
+        return () => window.clearInterval(interval);
+    }, [isPaused, nextSlide]);
+
+    function handleTouchStart(event: TouchEvent<HTMLElement>) {
+        touchStartX.current = event.touches[0]?.clientX ?? null;
+    }
+
+    function handleTouchEnd(event: TouchEvent<HTMLElement>) {
+        const startX = touchStartX.current;
+        const endX = event.changedTouches[0]?.clientX;
+
+        touchStartX.current = null;
+
+        if (startX === null || endX === undefined) {
+            return;
+        }
+
+        const distance = startX - endX;
+
+        if (Math.abs(distance) < SWIPE_THRESHOLD) {
+            return;
+        }
+
+        if (distance > 0) {
+            nextSlide();
+        } else {
+            prevSlide();
+        }
+    }
+
+    function handleKeyDown(event: KeyboardEvent<HTMLElement>) {
+        if (event.key === "ArrowLeft") {
+            event.preventDefault();
+            prevSlide();
+        }
+
+        if (event.key === "ArrowRight") {
+            event.preventDefault();
+            nextSlide();
+        }
+    }
 
     return (
-        <section className="relative h-screen overflow-hidden">
+        <section
+            aria-roledescription="carousel"
+            aria-label="Featured property categories"
+            className="relative h-[100svh] min-h-[38rem] overflow-hidden touch-pan-y outline-none"
+            onKeyDown={handleKeyDown}
+            onMouseEnter={() => setIsPaused(true)}
+            onMouseLeave={() => setIsPaused(false)}
+            onTouchStart={(event) => {
+                setIsPaused(true);
+                handleTouchStart(event);
+            }}
+            onTouchEnd={(event) => {
+                handleTouchEnd(event);
+                setIsPaused(false);
+            }}
+            onTouchCancel={() => {
+                touchStartX.current = null;
+                setIsPaused(false);
+            }}
+            tabIndex={0}
+        >
+            <div
+                className="flex h-full will-change-transform transition-transform duration-700 ease-out motion-reduce:transition-none"
+                style={{
+                    width: `${heroSlides.length * 100}%`,
+                    transform: `translate3d(-${(current * 100) / heroSlides.length}%, 0, 0)`,
+                }}
+                onTransitionEnd={() => { isTransitioningRef.current = false; }}
+            >
+                {heroSlides.map((slide, index) => (
+                    <article
+                        key={slide.id}
+                        aria-hidden={current !== index}
+                        className="relative h-full flex-none overflow-hidden"
+                        style={{ width: `${100 / heroSlides.length}%` }}
+                    >
+                        <Image
+                            src={slide.image}
+                            alt={slide.title}
+                            fill
+                            priority={index === 0}
+                            sizes="100vw"
+                            className="pointer-events-none object-cover select-none"
+                        />
 
-            {/* Background Slides */}
+                        <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-slate-950/90 via-slate-900/60 to-slate-900/30" />
+                        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-black/70 to-transparent" />
 
-            {heroSlides.map((slide, index) => (
-                <div
-                    key={slide.id}
-                    className={`absolute inset-0 transition-opacity duration-1000 ${current === index ? "opacity-100" : "opacity-0"
-                        }`}
-                >
-                    <img
-                        src={slide.image}
-                        alt={slide.title}
-                        className={`h-full w-full object-cover transition-transform duration-[7000ms] ${current === index ? "scale-110" : "scale-100"
-                            }`}
-                    />
-
-                    {/* Premium Overlay */}
-
-                    <div className="absolute inset-0 bg-gradient-to-r from-slate-950/90 via-slate-900/60 to-slate-900/30" />
-
-                    {/* Soft Bottom Fade */}
-
-                    <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-black/70 to-transparent" />
-                </div>
-            ))}
-
-            {/* Hero Content */}
-
-            <div className="relative z-20 mx-auto flex h-full max-w-7xl items-center px-6 pt-24 md:pt-28">
-
-                <HeroContent
-                    title={heroSlides[current].title}
-                    subtitle={heroSlides[current].subtitle}
-                    description={heroSlides[current].description}
-                />
-
+                        <div className="relative z-10 flex h-full items-start">
+                            <div className="mx-auto w-full max-w-7xl px-6 pt-32">
+                                <HeroContent
+                                    title={slide.title}
+                                    subtitle={slide.subtitle}
+                                    description={slide.description}
+                                />
+                            </div>
+                        </div>
+                    </article>
+                ))}
             </div>
-
-            {/* Navigation */}
 
             <HeroNavigation
                 total={heroSlides.length}
                 current={current}
                 onPrev={prevSlide}
                 onNext={nextSlide}
-                onSelect={setCurrent}
+                onSelect={goToSlide}
             />
 
+            <p className="sr-only" aria-live="polite">
+                Slide {current + 1} of {heroSlides.length}: {heroSlides[current]?.title}
+            </p>
         </section>
     );
 }
