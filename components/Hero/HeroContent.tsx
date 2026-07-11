@@ -14,25 +14,27 @@ export default function HeroContent({
     description,
 }: HeroContentProps) {
     return (
-        <div className="grid items-center gap-12 lg:grid-cols-2">
+        <div className="grid items-center gap-10 lg:grid-cols-2">
 
-            {/* LEFT SIDE */}
+            {/* LEFT */}
 
             <div className="max-w-2xl">
 
-                <p className="mb-5 text-sm font-bold uppercase tracking-[0.35em] text-amber-400">
+                <p className="mb-4 text-xs font-bold uppercase tracking-[0.35em] text-amber-400 sm:text-sm">
                     {subtitle}
                 </p>
 
-                <h1 className="text-5xl font-black leading-tight text-white md:text-6xl lg:text-7xl">
+                <h1 className="text-4xl font-black leading-tight text-white sm:text-5xl md:text-6xl lg:text-7xl">
                     {title}
                 </h1>
 
-                <p className="mt-8 max-w-xl text-lg leading-8 text-slate-200 md:text-xl">
+                <p className="mt-6 max-w-xl text-base leading-7 text-slate-200 sm:text-lg md:text-xl md:leading-8">
                     {description}
                 </p>
 
-                <div className="mt-10 flex flex-col gap-4 sm:flex-row">
+                {/* Buttons */}
+
+                <div className="mt-8 flex flex-col gap-4 sm:flex-row">
 
                     <Button href="#properties">
                         Explore Properties
@@ -47,7 +49,9 @@ export default function HeroContent({
 
                 </div>
 
-                <div className="mt-12 grid grid-cols-3 gap-4">
+                {/* Stats */}
+
+                <div className="mt-10 grid grid-cols-3 gap-3 sm:gap-5">
 
                     <StatCard
                         value="500+"
@@ -68,11 +72,11 @@ export default function HeroContent({
 
             </div>
 
-            {/* RIGHT SIDE */}
+            {/* RIGHT */}
 
             <div className="hidden lg:flex justify-end">
 
-                <div className="space-y-6 w-full max-w-sm">
+                <div className="w-full max-w-sm space-y-6">
 
                     <GlassCard>
 
@@ -85,7 +89,8 @@ export default function HeroContent({
                         </h3>
 
                         <p className="mt-3 text-slate-300">
-                            Prime investment opportunity near Yavatmal with excellent road connectivity.
+                            Prime investment opportunity near
+                            Yavatmal with excellent road connectivity.
                         </p>
 
                         <div className="mt-6 flex items-center justify-between">

@@ -17,30 +17,35 @@ export default function HeroNavigation({
         <>
             {/* Previous */}
             <button
+                type="button"
+                aria-label="Previous Slide"
                 onClick={onPrev}
                 className="
                     absolute
-                    left-4
+                    left-3
+                    sm:left-4
                     md:left-8
                     top-1/2
                     -translate-y-1/2
-                    z-30
+                    z-50
+                    flex
                     h-12
                     w-12
-                    md:h-14
-                    md:w-14
+                    items-center
+                    justify-center
                     rounded-full
                     border
                     border-white/20
                     bg-white/10
                     backdrop-blur-xl
+                    text-2xl
                     text-white
-                    text-xl
                     transition-all
                     duration-300
+                    hover:scale-110
                     hover:bg-white
                     hover:text-slate-900
-                    hover:scale-110
+                    active:scale-95
                 "
             >
                 ❮
@@ -48,50 +53,56 @@ export default function HeroNavigation({
 
             {/* Next */}
             <button
+                type="button"
+                aria-label="Next Slide"
                 onClick={onNext}
                 className="
                     absolute
-                    right-4
+                    right-3
+                    sm:right-4
                     md:right-8
                     top-1/2
                     -translate-y-1/2
-                    z-30
+                    z-50
+                    flex
                     h-12
                     w-12
-                    md:h-14
-                    md:w-14
+                    items-center
+                    justify-center
                     rounded-full
                     border
                     border-white/20
                     bg-white/10
                     backdrop-blur-xl
+                    text-2xl
                     text-white
-                    text-xl
                     transition-all
                     duration-300
+                    hover:scale-110
                     hover:bg-white
                     hover:text-slate-900
-                    hover:scale-110
+                    active:scale-95
                 "
             >
                 ❯
             </button>
 
             {/* Dots */}
-            <div className="absolute bottom-8 left-1/2 z-30 flex -translate-x-1/2 gap-3">
+            <div className="absolute bottom-6 sm:bottom-8 left-1/2 z-50 flex -translate-x-1/2 gap-2 sm:gap-3">
                 {Array.from({ length: total }).map((_, index) => (
                     <button
                         key={index}
+                        type="button"
+                        aria-label={`Go to slide ${index + 1}`}
                         onClick={() => onSelect(index)}
                         className={`
                             h-3
-                            w-3
                             rounded-full
                             transition-all
                             duration-300
                             ${current === index
-                                ? "bg-amber-400 w-10"
-                                : "bg-white/60 hover:bg-white"
+                                ? "w-10 bg-amber-400"
+                                : "w-3 bg-white/60 hover:bg-white"
                             }
                         `}
                     />

@@ -17,11 +17,11 @@ export default function PropertyCard({
     property,
 }: PropertyCardProps) {
     return (
-        <div className="group overflow-hidden rounded-3xl border border-white/10 bg-slate-900 transition duration-500 hover:-translate-y-2 hover:border-amber-400/50 hover:shadow-[0_25px_60px_rgba(0,0,0,0.45)]">
+        <article className="group overflow-hidden rounded-3xl border border-white/10 bg-slate-900 transition-all duration-500 hover:-translate-y-2 hover:border-amber-400/50 hover:shadow-2xl">
 
-            {/* IMAGE */}
+            {/* Image */}
 
-            <div className="relative h-72 overflow-hidden">
+            <div className="relative aspect-[4/3] overflow-hidden">
 
                 <Image
                     src={property.image}
@@ -31,105 +31,99 @@ export default function PropertyCard({
                     unoptimized
                 />
 
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
 
                 {property.featured && (
-                    <div className="absolute left-5 top-5 rounded-full bg-amber-400 px-4 py-2 text-xs font-bold text-black shadow-lg">
-
+                    <span className="absolute left-3 top-3 rounded-full bg-amber-400 px-3 py-1 text-xs font-bold text-black shadow">
                         FEATURED
-
-                    </div>
+                    </span>
                 )}
 
-                <div className="absolute right-5 top-5 rounded-full bg-slate-900/80 px-4 py-2 text-xs text-white backdrop-blur">
-
+                <span className="absolute right-3 top-3 rounded-full bg-black/60 px-3 py-1 text-xs font-semibold text-white backdrop-blur">
                     {property.id}
-
-                </div>
+                </span>
 
             </div>
 
-            {/* CONTENT */}
+            {/* Content */}
 
-            <div className="space-y-5 p-6">
+            <div className="space-y-5 p-5 md:p-6">
 
-                <h3 className="text-3xl font-bold text-white">
+                <div>
 
-                    {property.title}
+                    <h3 className="line-clamp-2 text-2xl font-bold text-white md:text-3xl">
+                        {property.title}
+                    </h3>
 
-                </h3>
+                    <div className="mt-3 flex items-center gap-2 text-sm text-slate-300">
 
-                <div className="flex items-center gap-2 text-slate-300">
+                        <MapPin size={16} />
 
-                    <MapPin size={18} />
+                        <span>{property.location}</span>
 
-                    <span>{property.location}</span>
+                    </div>
+
+                    <div className="mt-2 flex items-center gap-2 text-sm text-slate-300">
+
+                        <Ruler size={16} />
+
+                        <span>{property.area}</span>
+
+                    </div>
 
                 </div>
 
-                <div className="flex items-center gap-2 text-slate-300">
-
-                    <Ruler size={18} />
-
-                    <span>{property.area}</span>
-
-                </div>
+                {/* Price */}
 
                 <div className="flex items-center justify-between">
 
                     <div>
 
-                        <p className="text-sm uppercase tracking-widest text-slate-400">
+                        <p className="text-xs uppercase tracking-widest text-slate-400">
                             Starting From
                         </p>
 
-                        <p className="text-3xl font-black text-amber-400">
-
+                        <h4 className="text-2xl font-black text-amber-400 md:text-3xl">
                             {property.price}
-
-                        </p>
+                        </h4>
 
                     </div>
 
                     <BadgeCheck
-                        size={34}
+                        size={30}
                         className="text-green-400"
                     />
 
                 </div>
 
-                {/* BADGES */}
+                {/* Badges */}
 
                 <div className="flex flex-wrap gap-2">
 
                     {property.badges.map((badge) => (
-
                         <span
                             key={badge}
-                            className="rounded-full border border-amber-400/30 bg-amber-400/10 px-3 py-1 text-xs font-medium text-amber-300"
+                            className="rounded-full border border-amber-400/20 bg-amber-400/10 px-3 py-1 text-[11px] font-medium text-amber-300"
                         >
-
                             {badge}
-
                         </span>
-
                     ))}
 
                 </div>
 
+                {/* Button */}
+
                 <Link
                     href={`/property/${property.id}`}
-                    className="mt-6 flex items-center justify-center gap-2 rounded-2xl bg-amber-400 py-4 font-bold text-slate-900 transition hover:scale-[1.02]"
+                    className="flex w-full items-center justify-center gap-2 rounded-2xl bg-amber-400 py-3 font-bold text-slate-900 transition hover:bg-amber-300 active:scale-95"
                 >
-
                     View Property
 
                     <ArrowRight size={18} />
-
                 </Link>
 
             </div>
 
-        </div>
+        </article>
     );
 }
