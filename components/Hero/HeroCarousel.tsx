@@ -15,6 +15,7 @@ const SWIPE_THRESHOLD = 50;
 export default function HeroCarousel() {
     const [current, setCurrent] = useState(0);
     const [isPaused, setIsPaused] = useState(false);
+    const isTransitioningRef = useRef(false);
     const [isClientReady, setIsClientReady] = useState(false);
     const touchStartX = useRef<number | null>(null);
 
@@ -23,16 +24,24 @@ export default function HeroCarousel() {
     }, []);
 
     const goToSlide = useCallback((index: number) => {
-        const total = heroSlides.length;
+        if (isTransitioningRef.current) return;
+        isTransitioningRef.current = true;
 
+        const total = heroSlides.length;
         setCurrent(((index % total) + total) % total);
     }, []);
 
     const nextSlide = useCallback(() => {
+        if (isTransitioningRef.current) return;
+        isTransitioningRef.current = true;
+
         setCurrent((index) => (index + 1) % heroSlides.length);
     }, []);
 
     const prevSlide = useCallback(() => {
+        if (isTransitioningRef.current) return;
+        isTransitioningRef.current = true;
+
         setCurrent((index) =>
             index === 0 ? heroSlides.length - 1 : index - 1
         );
@@ -115,6 +124,7 @@ export default function HeroCarousel() {
                     width: `${heroSlides.length * 100}%`,
                     transform: `translate3d(-${(current * 100) / heroSlides.length}%, 0, 0)`,
                 }}
+                onTransitionEnd={() => { isTransitioningRef.current = false; }}
             >
                 {heroSlides.map((slide, index) => (
                     <article

@@ -5,7 +5,7 @@ export const heroSlides = [
         subtitle: "Premium Road-Touch Farm Lands",
         description:
             "Buy, Sell and Invest in fertile agricultural land across Yavatmal.",
-        image: "/hero/farm.png",
+        image: "/hero/farm.webp",
     },
     {
         id: 2,
@@ -13,7 +13,7 @@ export const heroSlides = [
         subtitle: "Build Your Dream Home",
         description:
             "Residential plots in fast-growing locations with excellent connectivity.",
-        image: "/hero/plot.png",
+        image: "/hero/plot.webp",
     },
     {
         id: 3,
@@ -21,7 +21,7 @@ export const heroSlides = [
         subtitle: "Ready to Move Properties",
         description:
             "Beautiful homes for families looking for comfort and convenience.",
-        image: "/hero/house.png",
+        image: "/hero/house.webp",
     },
     {
         id: 4,
@@ -29,6 +29,6 @@ export const heroSlides = [
         subtitle: "Grow Your Business",
         description:
             "Shops, offices and commercial spaces at prime locations.",
-        image: "/hero/commercial.png",
+        image: "/hero/commercial.webp",
     },
 ];
