@@ -145,8 +145,8 @@ export default function HeroCarousel() {
                         <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-slate-950/90 via-slate-900/60 to-slate-900/30" />
                         <div className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-black/70 to-transparent" />
 
-                        <div className="relative z-10 flex h-full items-center">
-                            <div className="mx-auto w-full max-w-7xl px-6 pt-24 md:pt-28">
+                        <div className="relative z-10 flex h-full items-start">
+                            <div className="mx-auto w-full max-w-7xl px-6 pt-32">
                                 <HeroContent
                                     title={slide.title}
                                     subtitle={slide.subtitle}
