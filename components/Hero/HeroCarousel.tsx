@@ -99,6 +99,7 @@ export default function HeroCarousel() {
     return (
         <section
             aria-roledescription="carousel"
+            id="home"
             aria-label="Featured property categories"
             className="relative h-[100svh] min-h-[38rem] overflow-hidden touch-pan-y outline-none"
             onKeyDown={handleKeyDown}

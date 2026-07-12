@@ -39,7 +39,7 @@ export default function WhyChooseUs() {
     return (
         <section
             id="about"
-            className="bg-[#030817] py-20 md:py-28"
+            className="bg-[#030817] py-16 md:py-24"
         >
             <div className="mx-auto max-w-7xl px-6">
 

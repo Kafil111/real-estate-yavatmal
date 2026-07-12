@@ -2,7 +2,7 @@
 
 import { ArrowRight } from "lucide-react";
 
-import PropertyCard from "@/components/Property/PropertyCard";
+import PropertyCard from "@/components/Properties/PropertyCard";
 
 import { properties } from "@/data/properties";
 
@@ -26,7 +26,7 @@ export default function FeaturedProperties({
     return (
         <section
             id="properties"
-            className="bg-[#030817] py-24"
+            className="bg-[#030817] py-16 md:py-24"
         >
             <div className="mx-auto max-w-7xl px-6">
 
@@ -47,9 +47,9 @@ export default function FeaturedProperties({
 
                 </div>
 
-                <div className="mb-10">
+                <div className="mb-10 flex justify-center">
 
-                    <p className="text-center text-slate-400">
+                    <p className="rounded-full border border-slate-300 bg-white px-6 py-2 text-sm font-semibold text-black">
 
                         {filteredProperties.length} Properties Found
 

@@ -27,7 +27,7 @@ const stats = [
 
 export default function StatsSection() {
     return (
-        <section className="relative overflow-hidden bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 py-28">
+        <section className="relative overflow-hidden bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 py-16 md:py-24">
 
             {/* Background Glow */}
 

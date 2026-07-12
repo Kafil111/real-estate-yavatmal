@@ -8,6 +8,34 @@ export type SearchFilters = {
     area: string;
 };
 
+const SQFT_PER_ACRE = 43560;
+
+function parseAreaToAcres(areaStr: string): number {
+    const match = areaStr.match(/[\d.]+/);
+    if (!match) return 0;
+
+    const value = parseFloat(match[0]);
+
+    if (areaStr.toLowerCase().includes("sq")) {
+        return value / SQFT_PER_ACRE;
+    }
+
+    return value;
+}
+
+function matchesAreaRange(areaStr: string, rangeValue: string): boolean {
+    if (!rangeValue) return true;
+
+    const acres = parseAreaToAcres(areaStr);
+
+    if (rangeValue === "20+") {
+        return acres >= 20;
+    }
+
+    const [min, max] = rangeValue.split("-").map(Number);
+    return acres >= min && acres < max;
+}
+
 export function usePropertyFilters(
     properties: Property[],
     filters: SearchFilters
@@ -24,11 +52,10 @@ export function usePropertyFilters(
                 !filters.type ||
                 property.type === filters.type;
 
-            const matchesArea =
-                !filters.area ||
-                property.area
-                    .toLowerCase()
-                    .includes(filters.area.toLowerCase());
+            const matchesArea = matchesAreaRange(
+                property.area,
+                filters.area
+            );
 
             const matchesBudget =
                 !filters.budget ||

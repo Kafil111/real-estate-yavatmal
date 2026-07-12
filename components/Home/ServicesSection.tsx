@@ -15,36 +15,42 @@ const services = [
         title: "Agricultural Land",
         description:
             "Premium road-touch agricultural land with clear title and excellent future appreciation.",
+        href: "#properties",
     },
     {
         icon: Home,
         title: "Residential Plots",
         description:
             "Residential plots in rapidly developing areas with excellent connectivity.",
+        href: "#properties",
     },
     {
         icon: Building2,
         title: "Commercial Properties",
         description:
             "Commercial plots and investment opportunities at strategic locations.",
+        href: "#properties",
     },
     {
         icon: FileCheck,
         title: "Documentation",
         description:
             "Complete assistance with registration, verification and legal documentation.",
+        href: "#contact",
     },
     {
         icon: BadgeDollarSign,
         title: "Investment Advisory",
         description:
             "Expert guidance to maximize your real estate investment returns.",
+        href: "#contact",
     },
     {
         icon: ArrowRight,
         title: "Property Resale",
         description:
             "Professional resale assistance to help you achieve the best market value.",
+        href: "#contact",
     },
 ];
 
@@ -102,13 +108,13 @@ export default function ServicesSection() {
                                         {service.description}
                                     </p>
 
-                                    <button className="mt-8 flex items-center gap-2 font-semibold text-amber-400 transition group-hover:gap-4">
+                                    <a href={service.href} className="mt-8 flex items-center gap-2 font-semibold text-amber-400 transition group-hover:gap-4">
 
                                         Learn More
 
                                         <ArrowRight size={18} />
 
-                                    </button>
+                                    </a>
 
                                 </div>
 

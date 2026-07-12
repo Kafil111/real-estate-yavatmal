@@ -1,11 +1,9 @@
 "use client";
 
-import Link from "next/link";
 import {
     Phone,
     MapPin,
     MessageCircle,
-    Globe,
     Camera,
     ArrowUp,
 } from "lucide-react";
@@ -16,11 +14,11 @@ export default function Footer() {
 
             <div className="mx-auto max-w-7xl px-6 py-20">
 
-                <div className="grid gap-14 md:grid-cols-2 lg:grid-cols-4">
+                <div className="grid gap-14 md:grid-cols-2 lg:grid-cols-6">
 
                     {/* Brand */}
 
-                    <div>
+                    <div className="lg:col-span-3">
 
                         <h2 className="text-3xl font-black text-white">
 
@@ -32,7 +30,7 @@ export default function Footer() {
 
                         </h2>
 
-                        <p className="mt-6 leading-8 text-slate-400">
+                        <p className="mt-6 max-w-md leading-8 text-slate-400">
                             Your trusted partner for agricultural land,
                             residential plots and premium investment
                             opportunities across Yavatmal.
@@ -50,21 +48,21 @@ export default function Footer() {
 
                         <div className="mt-6 flex flex-col gap-4">
 
-                            <Link href="#" className="text-slate-400 hover:text-amber-400">
+                            <a href="#home" className="text-slate-400 hover:text-amber-400">
                                 Home
-                            </Link>
+                            </a>
 
-                            <Link href="#properties" className="text-slate-400 hover:text-amber-400">
+                            <a href="#properties" className="text-slate-400 hover:text-amber-400">
                                 Properties
-                            </Link>
+                            </a>
 
-                            <Link href="#about" className="text-slate-400 hover:text-amber-400">
+                            <a href="#about" className="text-slate-400 hover:text-amber-400">
                                 About
-                            </Link>
+                            </a>
 
-                            <Link href="#contact" className="text-slate-400 hover:text-amber-400">
+                            <a href="#contact" className="text-slate-400 hover:text-amber-400">
                                 Contact
-                            </Link>
+                            </a>
 
                         </div>
 
@@ -104,20 +102,18 @@ export default function Footer() {
 
                             <div className="flex items-center gap-3 text-slate-400">
 
-                                <Phone size={18} />
 
-                                <a
-                                    href="tel:+919657594144"
+                                <a href="tel:+918793398909"
                                     className="flex items-center gap-3 text-slate-400 hover:text-amber-400 transition"
                                 >
-                                    <Phone size={18} />
-                                    +91 96575 94144
+                                    <Phone size={18} className="flex-shrink-0" />
+                                    <span className="whitespace-nowrap">+91 87933 98909</span>
                                 </a>
 
                             </div>
 
-                            <a
-                                href="https://wa.me/919657594144"
+
+                            <a href="https://wa.me/918793398909"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="flex items-center gap-3 text-slate-400 hover:text-amber-400 transition"
@@ -128,7 +124,7 @@ export default function Footer() {
 
                         </div>
 
-                        <div className="flex items-center gap-3 text-slate-400">
+                        <div className="mt-5 flex items-center gap-3 text-slate-400">
 
                             <MapPin size={18} />
 
@@ -136,27 +132,35 @@ export default function Footer() {
 
                         </div>
 
-                    </div>
+                        <div className="mt-8 flex gap-4">
 
-                    <div className="mt-8 flex gap-4">
 
-                        <button className="rounded-xl bg-slate-900 p-3 text-slate-300 transition hover:bg-amber-400 hover:text-slate-900">
+                            <a href="#"
+                                aria-disabled="true"
+                                title="Coming soon"
+                                onClick={(e) => e.preventDefault()}
+                                className="cursor-not-allowed rounded-xl bg-slate-900 p-3 text-slate-500 opacity-50"
+                            >
+                                <Camera size={20} />
+                            </a>
 
-                            <Globe size={20} />
 
-                        </button>
+                            <a href="#"
+                                aria-disabled="true"
+                                title="Coming soon"
+                                onClick={(e) => e.preventDefault()}
+                                className="cursor-not-allowed rounded-xl bg-slate-900 p-3 text-slate-500 opacity-50"
+                            >
+                                <MessageCircle size={20} />
+                            </a>
 
-                        <button className="rounded-xl bg-slate-900 p-3 text-slate-300 transition hover:bg-amber-400 hover:text-slate-900">
+                        </div>
 
-                            <Camera size={20} />
+                    </div >
 
-                        </button>
+                </div >
 
-                    </div>
-
-                </div>
-
-            </div>
+            </div >
 
             <div className="mt-16 flex flex-col items-center justify-between gap-6 border-t border-white/10 pt-8 md:flex-row">
 
@@ -176,6 +180,6 @@ export default function Footer() {
 
             </div>
 
-        </footer>
+        </footer >
     );
 }

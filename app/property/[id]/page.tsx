@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
-import PropertyCard from "@/components/Property/PropertyCard";
-import PropertyGallery from "@/components/Property/PropertyGallery";
+import PropertyCard from "@/components/Properties/PropertyCard";
+import PropertyGallery from "@/components/Properties/PropertyGallery";
 import { properties } from "@/data/properties";
 
 type PageProps = {
@@ -31,9 +31,9 @@ export default async function PropertyPage({
         .slice(0, 3);
 
     return (
-        <main className="min-h-screen bg-slate-100 py-12">
+        <main className="min-h-screen bg-[#030817] py-12">
 
-            <div className="mx-auto max-w-6xl overflow-hidden rounded-3xl bg-white shadow-xl">
+            <div className="mx-auto max-w-6xl overflow-hidden rounded-3xl border border-white/10 bg-slate-900 shadow-xl">
 
                 <PropertyGallery
                     images={property.gallery}
@@ -46,11 +46,11 @@ export default async function PropertyPage({
 
                     <div className="flex flex-wrap items-center gap-3">
 
-                        <span className="rounded-full bg-amber-400 px-4 py-2 text-sm font-bold">
+                        <span className="rounded-full bg-amber-400 px-4 py-2 text-sm font-bold text-slate-900">
                             ⭐ FEATURED
                         </span>
 
-                        <span className="rounded-full bg-green-100 px-4 py-2 text-sm font-semibold text-green-700">
+                        <span className="rounded-full bg-green-400/10 px-4 py-2 text-sm font-semibold text-green-400">
                             Available
                         </span>
 
@@ -58,11 +58,11 @@ export default async function PropertyPage({
 
                     {/* Title */}
 
-                    <h1 className="mt-6 text-4xl font-black md:text-5xl">
+                    <h1 className="mt-6 text-4xl font-black text-white md:text-5xl">
                         {property.title}
                     </h1>
 
-                    <p className="mt-4 text-lg text-slate-600">
+                    <p className="mt-4 text-lg text-slate-400">
                         📍 {property.location}
                     </p>
 
@@ -70,49 +70,49 @@ export default async function PropertyPage({
 
                     <div className="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
 
-                        <div className="rounded-2xl border border-slate-200 p-6">
+                        <div className="rounded-2xl border border-white/10 bg-slate-800 p-6">
 
-                            <p className="text-sm text-slate-500">
+                            <p className="text-sm text-slate-400">
                                 Property ID
                             </p>
 
-                            <h3 className="mt-2 text-2xl font-bold">
+                            <h3 className="mt-2 text-2xl font-bold text-white">
                                 {property.id}
                             </h3>
 
                         </div>
 
-                        <div className="rounded-2xl border border-slate-200 p-6">
+                        <div className="rounded-2xl border border-white/10 bg-slate-800 p-6">
 
-                            <p className="text-sm text-slate-500">
+                            <p className="text-sm text-slate-400">
                                 Property Type
                             </p>
 
-                            <h3 className="mt-2 text-2xl font-bold">
+                            <h3 className="mt-2 text-2xl font-bold text-white">
                                 {property.type}
                             </h3>
 
                         </div>
 
-                        <div className="rounded-2xl border border-slate-200 p-6">
+                        <div className="rounded-2xl border border-white/10 bg-slate-800 p-6">
 
-                            <p className="text-sm text-slate-500">
+                            <p className="text-sm text-slate-400">
                                 Area
                             </p>
 
-                            <h3 className="mt-2 text-2xl font-bold">
+                            <h3 className="mt-2 text-2xl font-bold text-white">
                                 {property.area}
                             </h3>
 
                         </div>
 
-                        <div className="rounded-2xl border border-slate-200 p-6">
+                        <div className="rounded-2xl border border-white/10 bg-slate-800 p-6">
 
-                            <p className="text-sm text-slate-500">
+                            <p className="text-sm text-slate-400">
                                 Total Price
                             </p>
 
-                            <h3 className="mt-2 text-2xl font-bold text-green-700">
+                            <h3 className="mt-2 text-2xl font-bold text-amber-400">
                                 {property.totalPrice}
                             </h3>
 
@@ -124,13 +124,13 @@ export default async function PropertyPage({
 
                     <div className="mt-12 grid gap-6 lg:grid-cols-[2fr_1fr]">
 
-                        <div className="rounded-3xl border border-slate-200 bg-slate-50 p-8">
+                        <div className="rounded-3xl border border-white/10 bg-slate-800 p-8">
 
-                            <h2 className="text-3xl font-bold">
+                            <h2 className="text-3xl font-bold text-white">
                                 Interested in this property?
                             </h2>
 
-                            <p className="mt-4 text-slate-600">
+                            <p className="mt-4 text-slate-400">
                                 Schedule your site visit today.
                                 We will provide complete property
                                 documents, legal verification and
@@ -142,7 +142,7 @@ export default async function PropertyPage({
 
                                 <a
                                     href={`tel:${property.contact.phone}`}
-                                    className="rounded-xl bg-green-700 px-8 py-4 font-semibold text-white transition hover:bg-green-800"
+                                    className="rounded-xl bg-green-600 px-8 py-4 font-semibold text-white transition hover:bg-green-700"
                                 >
                                     📞 Call Now
                                 </a>
@@ -162,25 +162,25 @@ export default async function PropertyPage({
 
                         <div className="rounded-3xl bg-amber-400 p-8">
 
-                            <p className="text-sm uppercase font-semibold">
+                            <p className="text-sm font-semibold uppercase text-slate-900/70">
                                 Property Price
                             </p>
 
-                            <h2 className="mt-2 text-5xl font-black">
+                            <h2 className="mt-2 text-5xl font-black text-slate-900">
                                 {property.totalPrice}
                             </h2>
 
-                            <p className="mt-4 text-lg font-semibold">
+                            <p className="mt-4 text-lg font-semibold text-slate-900/80">
                                 {property.price}
                             </p>
 
-                            <div className="mt-8 rounded-2xl bg-white/70 p-5">
+                            <div className="mt-8 rounded-2xl bg-slate-900/10 p-5">
 
-                                <p className="text-sm">
+                                <p className="text-sm text-slate-900/70">
                                     Property Code
                                 </p>
 
-                                <h3 className="text-2xl font-bold">
+                                <h3 className="text-2xl font-bold text-slate-900">
                                     {property.id}
                                 </h3>
 
@@ -194,7 +194,7 @@ export default async function PropertyPage({
 
                     <section className="mt-16">
 
-                        <h2 className="mb-6 text-3xl font-bold">
+                        <h2 className="mb-6 text-3xl font-bold text-white">
                             Property Highlights
                         </h2>
 
@@ -203,9 +203,9 @@ export default async function PropertyPage({
                             {property.highlights.map((item) => (
                                 <div
                                     key={item}
-                                    className="rounded-xl bg-slate-100 p-5"
+                                    className="rounded-xl border border-white/10 bg-slate-800 p-5 text-slate-200"
                                 >
-                                    ✅ {item}
+                                    <span className="text-amber-400">✅</span> {item}
                                 </div>
                             ))}
 
@@ -217,24 +217,25 @@ export default async function PropertyPage({
 
                     <section className="mt-16">
 
-                        <h2 className="mb-6 text-3xl font-bold">
+                        <h2 className="mb-6 text-3xl font-bold text-white">
                             Description
                         </h2>
 
-                        <p className="leading-8 text-slate-700">
+                        <p className="leading-8 text-slate-400">
                             {property.description}
                         </p>
 
                     </section>
+
                     {/* Google Map */}
 
                     <section className="mt-16">
 
-                        <h2 className="mb-6 text-3xl font-bold">
+                        <h2 className="mb-6 text-3xl font-bold text-white">
                             Property Location
                         </h2>
 
-                        <div className="overflow-hidden rounded-3xl border border-slate-200">
+                        <div className="overflow-hidden rounded-3xl border border-white/10">
 
                             <iframe
                                 src={property.mapUrl}
@@ -254,7 +255,7 @@ export default async function PropertyPage({
 
                     <section className="mt-16">
 
-                        <h2 className="mb-6 text-3xl font-bold">
+                        <h2 className="mb-6 text-3xl font-bold text-white">
                             Nearby Distances
                         </h2>
 
@@ -265,14 +266,14 @@ export default async function PropertyPage({
 
                                     <div
                                         key={place}
-                                        className="flex items-center justify-between rounded-2xl bg-slate-100 p-5"
+                                        className="flex items-center justify-between rounded-2xl border border-white/10 bg-slate-800 p-5"
                                     >
 
-                                        <span className="font-medium">
+                                        <span className="font-medium text-slate-200">
                                             {place}
                                         </span>
 
-                                        <span className="font-bold text-green-700">
+                                        <span className="font-bold text-amber-400">
                                             {distance}
                                         </span>
 
@@ -293,11 +294,11 @@ export default async function PropertyPage({
 
                             <div className="mb-10">
 
-                                <h2 className="text-4xl font-black">
+                                <h2 className="text-4xl font-black text-white">
                                     Similar Properties
                                 </h2>
 
-                                <p className="mt-3 text-slate-600">
+                                <p className="mt-3 text-slate-400">
                                     You may also be interested in these
                                     properties.
                                 </p>
@@ -323,9 +324,9 @@ export default async function PropertyPage({
 
                 </div>
 
-            </div>
+            </div >
 
-        </main>
+        </main >
 
     );
 

@@ -1,5 +1,5 @@
 "use client";
-
+import { properties } from "@/data/properties";
 import { useState } from "react";
 
 import {
@@ -33,9 +33,11 @@ export default function SearchSection({ onSearch }: Props) {
             [key]: value,
         }));
     }
-
+    const uniqueLocations = Array.from(
+        new Set(properties.map((p) => p.location))
+    );
     return (
-        <section className="relative z-30 px-6 pt-12 pb-20">
+        <section className="relative z-30 px-6 py-16 md:py-24">
             <div className="mx-auto max-w-7xl">
 
                 <div className="rounded-3xl border border-white/10 bg-slate-900/90 p-8 shadow-2xl backdrop-blur-xl">
@@ -70,8 +72,14 @@ export default function SearchSection({ onSearch }: Props) {
                                     updateField("location", e.target.value)
                                 }
                                 placeholder="Yavatmal"
+                                list="location-suggestions"
                                 className="w-full bg-transparent text-white outline-none placeholder:text-slate-500"
                             />
+                            <datalist id="location-suggestions">
+                                {uniqueLocations.map((loc) => (
+                                    <option key={loc} value={loc} />
+                                ))}
+                            </datalist>
 
                         </div>
 
@@ -153,20 +161,35 @@ export default function SearchSection({ onSearch }: Props) {
 
                             </label>
 
-                            <input
+                            <select
                                 value={filters.area}
                                 onChange={(e) =>
                                     updateField("area", e.target.value)
                                 }
-                                placeholder="5 Acre"
-                                className="w-full bg-transparent text-white outline-none placeholder:text-slate-500"
-                            />
+                                className="w-full bg-transparent text-white outline-none"
+                            >
+                                <option value="" className="bg-slate-900">
+                                    Any Size
+                                </option>
+                                <option value="0-5" className="bg-slate-900">
+                                    0 - 5 Acre
+                                </option>
+                                <option value="5-10" className="bg-slate-900">
+                                    5 - 10 Acre
+                                </option>
+                                <option value="10-20" className="bg-slate-900">
+                                    10 - 20 Acre
+                                </option>
+                                <option value="20+" className="bg-slate-900">
+                                    20+ Acre
+                                </option>
+                            </select>
 
                         </div>
 
                         <button
                             onClick={() => onSearch(filters)}
-                            className="flex items-center justify-center gap-3 rounded-2xl bg-amber-400 font-bold text-slate-900 transition hover:scale-105"
+                            className="flex w-full items-center justify-center gap-3 rounded-2xl bg-amber-400 px-10 py-4 text-lg font-bold text-slate-900 transition hover:scale-105"
                         >
 
                             <Search size={20} />
