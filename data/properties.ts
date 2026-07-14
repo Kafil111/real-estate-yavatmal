@@ -54,8 +54,8 @@ export const properties: Property[] = [
         },
 
         contact: {
-            phone: "8793398909",
-            whatsapp: "918793398909",
+            phone: "96575 94144",
+            whatsapp: "9196575 94144",
         },
     },
 
@@ -111,8 +111,8 @@ export const properties: Property[] = [
         },
 
         contact: {
-            phone: "8793398909",
-            whatsapp: "918793398909",
+            phone: "96575 94144",
+            whatsapp: "9196575 94144",
         },
     },
 
@@ -167,8 +167,8 @@ export const properties: Property[] = [
         },
 
         contact: {
-            phone: "8793398909",
-            whatsapp: "918793398909",
+            phone: "96575 94144",
+            whatsapp: "9196575 94144",
         },
     },
 
@@ -223,8 +223,8 @@ export const properties: Property[] = [
         },
 
         contact: {
-            phone: "8793398909",
-            whatsapp: "918793398909",
+            phone: "96575 94144",
+            whatsapp: "9196575 94144",
         },
     },
 
@@ -279,8 +279,8 @@ export const properties: Property[] = [
         },
 
         contact: {
-            phone: "8793398909",
-            whatsapp: "918793398909",
+            phone: "96575 94144",
+            whatsapp: "9196575 94144",
         },
     },
 
@@ -336,8 +336,8 @@ export const properties: Property[] = [
         },
 
         contact: {
-            phone: "8793398909",
-            whatsapp: "918793398909",
+            phone: "96575 94144",
+            whatsapp: "9196575 94144",
         },
     },
 ];

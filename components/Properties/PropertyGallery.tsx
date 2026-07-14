@@ -6,11 +6,13 @@ import Image from "next/image";
 type PropertyGalleryProps = {
     images: string[];
     title: string;
+    code: string;
 };
 
 export default function PropertyGallery({
     images,
     title,
+    code,
 }: PropertyGalleryProps) {
     const [selectedImage, setSelectedImage] = useState(images[0]);
 
@@ -25,6 +27,10 @@ export default function PropertyGallery({
                     priority
                     className="object-cover"
                 />
+
+                <span className="absolute right-4 top-4 rounded-full bg-black/60 px-4 py-2 text-sm font-semibold text-white backdrop-blur">
+                    {code}
+                </span>
             </div>
 
             {/* Thumbnail Images */}

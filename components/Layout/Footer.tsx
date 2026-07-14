@@ -64,10 +64,6 @@ export default function Footer() {
                                 Contact
                             </a>
 
-                            <a href="#contact" className="text-slate-400 hover:text-amber-400">
-                                Contact
-                            </a>
-
                         </div>
 
                     </div>
@@ -107,17 +103,17 @@ export default function Footer() {
                             <div className="flex items-center gap-3 text-slate-400">
 
 
-                                <a href="tel:+918793398909"
+                                <a href="tel:+9196575 94144"
                                     className="flex items-center gap-3 text-slate-400 hover:text-amber-400 transition"
                                 >
                                     <Phone size={18} className="flex-shrink-0" />
-                                    <span className="whitespace-nowrap">+91 87933 98909</span>
+                                    <span className="whitespace-nowrap">+91 96575 94144</span>
                                 </a>
 
                             </div>
 
 
-                            <a href="https://wa.me/918793398909"
+                            <a href="https://wa.me/9196575 94144"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="flex items-center gap-3 text-slate-400 hover:text-amber-400 transition"
@@ -139,17 +135,17 @@ export default function Footer() {
                         <div className="mt-8 flex gap-4">
 
 
-                            <a href="#"
-                                aria-disabled="true"
-                                title="Coming soon"
-                                onClick={(e) => e.preventDefault()}
-                                className="cursor-not-allowed rounded-xl bg-slate-900 p-3 text-slate-500 opacity-50"
+                            <a href="https://www.instagram.com/realestate_yavatmal/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                aria-label="Follow us on Instagram"
+                                className="rounded-xl bg-slate-900 p-3 text-slate-300 transition hover:bg-amber-400 hover:text-slate-900"
                             >
                                 <Camera size={20} />
                             </a>
 
 
-                            <a href="#"
+                            <a href="https://chat.whatsapp.com/HgURIIa77lvGrIryfUccLH"
                                 aria-disabled="true"
                                 title="Coming soon"
                                 onClick={(e) => e.preventDefault()}

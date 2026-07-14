@@ -102,6 +102,7 @@ export default async function PropertyPage({
                     <PropertyGallery
                         images={property.gallery}
                         title={property.title}
+                        code={property.id}
                     />
 
                     <div className="p-8 md:p-10">

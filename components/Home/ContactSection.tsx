@@ -44,12 +44,12 @@ export default function ContactSection() {
                             {
                                 icon: Phone,
                                 title: "Call Us",
-                                value: "+91 8793398909",
+                                value: "+91 96575 94144",
                             },
                             {
                                 icon: MessageCircle,
                                 title: "WhatsApp",
-                                value: "+91 8793398909",
+                                value: "+91 96575 94144",
                             },
                             {
                                 icon: MapPin,
