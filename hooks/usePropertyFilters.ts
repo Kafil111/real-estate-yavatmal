@@ -10,6 +10,36 @@ export type SearchFilters = {
 
 const SQFT_PER_ACRE = 43560;
 
+// --- Budget Helpers ---
+
+function parseBudgetToLakhs(priceStr: string): number {
+    const match = priceStr.match(/[\d,.]+/);
+    if (!match) return 0;
+
+    const value = parseFloat(match[0].replace(/,/g, ""));
+
+    if (priceStr.toLowerCase().includes("crore")) {
+        return value * 100;
+    }
+
+    return value;
+}
+
+function matchesBudgetRange(priceStr: string, rangeValue: string): boolean {
+    if (!rangeValue) return true;
+
+    const lakhs = parseBudgetToLakhs(priceStr);
+
+    if (rangeValue === "100+") {
+        return lakhs >= 100;
+    }
+
+    const [min, max] = rangeValue.split("-").map(Number);
+    return lakhs >= min && lakhs < max;
+}
+
+// --- Area Helpers ---
+
 function parseAreaToAcres(areaStr: string): number {
     const match = areaStr.match(/[\d.]+/);
     if (!match) return 0;
@@ -36,6 +66,8 @@ function matchesAreaRange(areaStr: string, rangeValue: string): boolean {
     return acres >= min && acres < max;
 }
 
+// --- Main Hook ---
+
 export function usePropertyFilters(
     properties: Property[],
     filters: SearchFilters
@@ -57,11 +89,10 @@ export function usePropertyFilters(
                 filters.area
             );
 
-            const matchesBudget =
-                !filters.budget ||
-                property.totalPrice
-                    .toLowerCase()
-                    .includes(filters.budget.toLowerCase());
+            const matchesBudget = matchesBudgetRange(
+                property.totalPrice,
+                filters.budget
+            );
 
             return (
                 matchesLocation &&

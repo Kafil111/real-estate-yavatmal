@@ -41,7 +41,7 @@ export default function HeroContent({
                     </Button>
 
                     <Button
-                        href="https://wa.me/919657594144"
+                        href="https://wa.me/918793398909"
                         variant="secondary"
                     >
                         WhatsApp Us
@@ -56,16 +56,19 @@ export default function HeroContent({
                     <StatCard
                         value="500+"
                         label="Properties"
+                        headingLevel="h2"
                     />
 
                     <StatCard
                         value="100%"
                         label="Verified"
+                        headingLevel="h2"
                     />
 
                     <StatCard
                         value="24/7"
                         label="Support"
+                        headingLevel="h2"
                         className="hidden sm:block"
                     />
 

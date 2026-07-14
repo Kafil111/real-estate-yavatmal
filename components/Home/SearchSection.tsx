@@ -85,7 +85,7 @@ export default function SearchSection({ onSearch }: Props) {
 
                         <div className="rounded-2xl border border-white/10 bg-slate-800 p-4">
 
-                            <label className="mb-2 flex items-center gap-2 text-sm text-slate-400">
+                            <label htmlFor="property-type-filter" className="mb-2 flex items-center gap-2 text-sm text-slate-400">
 
                                 <Building2 size={16} />
 
@@ -94,6 +94,7 @@ export default function SearchSection({ onSearch }: Props) {
                             </label>
 
                             <select
+                                id="property-type-filter"
                                 value={filters.type}
                                 onChange={(e) =>
                                     updateField("type", e.target.value)
@@ -132,7 +133,7 @@ export default function SearchSection({ onSearch }: Props) {
 
                         <div className="rounded-2xl border border-white/10 bg-slate-800 p-4">
 
-                            <label className="mb-2 flex items-center gap-2 text-sm text-slate-400">
+                            <label htmlFor="budget-filter" className="mb-2 flex items-center gap-2 text-sm text-slate-400">
 
                                 <IndianRupee size={16} />
 
@@ -140,20 +141,39 @@ export default function SearchSection({ onSearch }: Props) {
 
                             </label>
 
-                            <input
+                            <select
+                                id="budget-filter"
                                 value={filters.budget}
                                 onChange={(e) =>
                                     updateField("budget", e.target.value)
                                 }
-                                placeholder="₹45 Lakh"
-                                className="w-full bg-transparent text-white outline-none placeholder:text-slate-500"
-                            />
+                                className="w-full bg-transparent text-white outline-none"
+                            >
+                                <option value="" className="bg-slate-900">
+                                    Any Budget
+                                </option>
+                                <option value="0-15" className="bg-slate-900">
+                                    Under ₹15 Lakh
+                                </option>
+                                <option value="15-30" className="bg-slate-900">
+                                    ₹15 - 30 Lakh
+                                </option>
+                                <option value="30-50" className="bg-slate-900">
+                                    ₹30 - 50 Lakh
+                                </option>
+                                <option value="50-100" className="bg-slate-900">
+                                    ₹50 Lakh - 1 Crore
+                                </option>
+                                <option value="100+" className="bg-slate-900">
+                                    Above ₹1 Crore
+                                </option>
+                            </select>
 
                         </div>
 
                         <div className="rounded-2xl border border-white/10 bg-slate-800 p-4">
 
-                            <label className="mb-2 flex items-center gap-2 text-sm text-slate-400">
+                            <label htmlFor="area-filter" className="mb-2 flex items-center gap-2 text-sm text-slate-400">
 
                                 <Ruler size={16} />
 
@@ -162,6 +182,7 @@ export default function SearchSection({ onSearch }: Props) {
                             </label>
 
                             <select
+                                id="area-filter"
                                 value={filters.area}
                                 onChange={(e) =>
                                     updateField("area", e.target.value)

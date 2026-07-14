@@ -12,16 +12,18 @@ export default function PropertyGallery({
     images,
     title,
 }: PropertyGalleryProps) {
-    const [selectedImage, setSelectedImage] = useState("/properties/w323/main.jpg");
+    const [selectedImage, setSelectedImage] = useState(images[0]);
 
     return (
         <div>
             {/* Main Image */}
             <div className="relative h-[500px] w-full overflow-hidden rounded-2xl">
-                <img
+                <Image
                     src={selectedImage}
                     alt={title}
-                    className="h-[500px] w-full object-cover"
+                    fill
+                    priority
+                    className="object-cover"
                 />
             </div>
 
@@ -31,15 +33,17 @@ export default function PropertyGallery({
                     <button
                         key={index}
                         onClick={() => setSelectedImage(image)}
-                        className={`overflow-hidden rounded-lg border-4 transition ${selectedImage === image
+                        aria-label={`Show image ${index + 1} of ${title}`}
+                        className={`relative h-24 w-full overflow-hidden rounded-lg border-4 transition ${selectedImage === image
                             ? "border-green-600"
                             : "border-transparent hover:border-gray-300"
                             }`}
                     >
-                        <img
+                        <Image
                             src={image}
                             alt={`${title} ${index + 1}`}
-                            className="h-24 w-full object-cover"
+                            fill
+                            className="object-cover"
                         />
                     </button>
                 ))}

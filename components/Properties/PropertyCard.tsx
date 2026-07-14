@@ -28,7 +28,6 @@ export default function PropertyCard({
                     alt={property.title}
                     fill
                     className="object-cover transition duration-700 group-hover:scale-110"
-                    unoptimized
                 />
 
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
@@ -115,6 +114,7 @@ export default function PropertyCard({
 
                 <Link
                     href={`/property/${property.id}`}
+                    aria-label={`View details for ${property.title}`}
                     className="flex w-full items-center justify-center gap-2 rounded-2xl bg-amber-400 py-3 font-bold text-slate-900 transition hover:bg-amber-300 active:scale-95"
                 >
                     View Property

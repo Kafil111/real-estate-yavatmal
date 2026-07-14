@@ -122,7 +122,7 @@ export default function ContactSection() {
                                 className="w-full rounded-2xl border border-white/10 bg-slate-800 p-4 text-white outline-none placeholder:text-slate-500 focus:border-amber-400"
                             />
 
-                            <select className="w-full rounded-2xl border border-white/10 bg-slate-800 p-4 text-white outline-none focus:border-amber-400">
+                            <select aria-label="Property type of interest" className="w-full rounded-2xl border border-white/10 bg-slate-800 p-4 text-white outline-none focus:border-amber-400">
 
                                 <option>Agricultural Land</option>
                                 <option>Residential Plot</option>

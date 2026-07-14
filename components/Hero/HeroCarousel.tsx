@@ -131,6 +131,7 @@ export default function HeroCarousel() {
                     <article
                         key={slide.id}
                         aria-hidden={current !== index}
+                        inert={current !== index}
                         className="relative h-full flex-none overflow-hidden"
                         style={{ width: `${100 / heroSlides.length}%` }}
                     >

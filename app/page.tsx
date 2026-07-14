@@ -30,27 +30,31 @@ export default function Home() {
     <>
       <Navbar />
 
-      <Hero />
+      <main>
 
-      <SearchSection onSearch={setFilters} />
+        <Hero />
 
-      <FeaturedProperties filters={filters} />
+        <SearchSection onSearch={setFilters} />
 
-      <WhyChooseUs />
+        <FeaturedProperties filters={filters} />
 
-      <StatsSection />
+        <WhyChooseUs />
 
-      <ServicesSection />
+        <StatsSection />
 
-      <Testimonials />
+        <ServicesSection />
 
-      <FAQ />
+        <Testimonials />
 
-      <ContactSection />
+        <FAQ />
 
-      <CTASection />
+        <ContactSection />
 
-      <Footer />
+        <CTASection />
+
+        <Footer />
+
+      </main>
 
       <FloatingButtons />
     </>

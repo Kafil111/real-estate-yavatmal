@@ -96,17 +96,21 @@ export default function HeroNavigation({
                         type="button"
                         aria-label={`Go to slide ${index + 1}`}
                         onClick={() => onSelect(index)}
-                        className={`
-                            h-3
-                            rounded-full
-                            transition-all
-                            duration-300
-                            ${current === index
-                                ? "w-10 bg-amber-400"
-                                : "w-3 bg-white/60 hover:bg-white"
-                            }
-                        `}
-                    />
+                        className="flex h-8 w-8 items-center justify-center"
+                    >
+                        <span
+                            className={`
+                                h-3
+                                rounded-full
+                                transition-all
+                                duration-300
+                                ${current === index
+                                    ? "w-10 bg-amber-400"
+                                    : "w-3 bg-white/60 hover:bg-white"
+                                }
+                            `}
+                        />
+                    </button>
                 ))}
             </div>
         </>

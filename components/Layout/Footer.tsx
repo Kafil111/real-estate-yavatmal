@@ -48,16 +48,20 @@ export default function Footer() {
 
                         <div className="mt-6 flex flex-col gap-4">
 
-                            <a href="#home" className="text-slate-400 hover:text-amber-400">
+                            <a href="/#home" className="text-slate-400 hover:text-amber-400">
                                 Home
                             </a>
 
-                            <a href="#properties" className="text-slate-400 hover:text-amber-400">
+                            <a href="/#properties" className="text-slate-400 hover:text-amber-400">
                                 Properties
                             </a>
 
-                            <a href="#about" className="text-slate-400 hover:text-amber-400">
+                            <a href="/#about" className="text-slate-400 hover:text-amber-400">
                                 About
+                            </a>
+
+                            <a href="/#contact" className="text-slate-400 hover:text-amber-400">
+                                Contact
                             </a>
 
                             <a href="#contact" className="text-slate-400 hover:text-amber-400">
@@ -164,7 +168,7 @@ export default function Footer() {
 
             <div className="mt-16 flex flex-col items-center justify-between gap-6 border-t border-white/10 pt-8 md:flex-row">
 
-                <p className="text-sm text-slate-500">
+                <p className="text-sm text-slate-400">
                     © 2026 Real Estate Yavatmal. All Rights Reserved.
                 </p>
 

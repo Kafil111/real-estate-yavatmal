@@ -108,7 +108,7 @@ export default function ServicesSection() {
                                         {service.description}
                                     </p>
 
-                                    <a href={service.href} className="mt-8 flex items-center gap-2 font-semibold text-amber-400 transition group-hover:gap-4">
+                                    <a href={service.href} aria-label={`Learn more about ${service.title}`} className="mt-8 flex items-center gap-2 font-semibold text-amber-400 transition group-hover:gap-4">
 
                                         Learn More
 

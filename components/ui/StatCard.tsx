@@ -2,13 +2,17 @@ type StatCardProps = {
     value: string;
     label: string;
     className?: string;
+    headingLevel?: "h2" | "h3";
 };
 
 export default function StatCard({
     value,
     label,
     className = "",
+    headingLevel = "h3",
 }: StatCardProps) {
+    const HeadingTag = headingLevel;
+
     return (
         <div
             className={`
@@ -26,9 +30,9 @@ export default function StatCard({
                 ${className}
             `}
         >
-            <h3 className="text-3xl font-extrabold text-amber-400 md:text-4xl">
+            <HeadingTag className="text-3xl font-extrabold text-amber-400 md:text-4xl">
                 {value}
-            </h3>
+            </HeadingTag>
 
             <p className="mt-2 text-sm font-medium tracking-wide text-slate-200 md:text-base">
                 {label}
