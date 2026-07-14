@@ -146,10 +146,10 @@ export default function Footer() {
 
 
                             <a href="https://chat.whatsapp.com/HgURIIa77lvGrIryfUccLH"
-                                aria-disabled="true"
-                                title="Coming soon"
-                                onClick={(e) => e.preventDefault()}
-                                className="cursor-not-allowed rounded-xl bg-slate-900 p-3 text-slate-500 opacity-50"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                aria-label="join our WhatsApp community"
+                                className="rounded-xl bg-slate-900 p-3 text-slate-300 transition hover:bg-amber-400 hover:text-slate-900"
                             >
                                 <MessageCircle size={20} />
                             </a>
