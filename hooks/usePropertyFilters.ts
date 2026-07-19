@@ -76,9 +76,9 @@ export function usePropertyFilters(
         return properties.filter((property) => {
             const matchesLocation =
                 !filters.location ||
-                property.location
-                    .toLowerCase()
-                    .includes(filters.location.toLowerCase());
+                Object.values(property.location).some((loc) =>
+                    loc.toLowerCase().includes(filters.location.toLowerCase())
+                );
 
             const matchesType =
                 !filters.type ||

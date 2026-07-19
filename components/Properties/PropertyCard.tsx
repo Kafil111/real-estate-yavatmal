@@ -1,3 +1,6 @@
+import { useLocale } from "next-intl";
+import { getLocalizedText } from "@/lib/getLocalizedText";
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -16,6 +19,13 @@ type PropertyCardProps = {
 export default function PropertyCard({
     property,
 }: PropertyCardProps) {
+    const t = useTranslations("PropertyCard");
+    const locale = useLocale();
+
+    const title = getLocalizedText(property.title, locale);
+    const location = getLocalizedText(property.location, locale);
+    const badges = property.badges.map((badge) => getLocalizedText(badge, locale));
+
     return (
         <article className="group overflow-hidden rounded-3xl border border-white/10 bg-slate-900 transition-all duration-500 hover:-translate-y-2 hover:border-amber-400/50 hover:shadow-2xl">
 
@@ -25,7 +35,7 @@ export default function PropertyCard({
 
                 <Image
                     src={property.image}
-                    alt={property.title}
+                    alt={title}
                     fill
                     className="object-cover transition duration-700 group-hover:scale-110"
                 />
@@ -51,14 +61,14 @@ export default function PropertyCard({
                 <div>
 
                     <h3 className="line-clamp-2 text-2xl font-bold text-white md:text-3xl">
-                        {property.title}
+                        {title}
                     </h3>
 
                     <div className="mt-3 flex items-center gap-2 text-sm text-slate-300">
 
                         <MapPin size={16} />
 
-                        <span>{property.location}</span>
+                        <span>{location}</span>
 
                     </div>
 
@@ -79,7 +89,7 @@ export default function PropertyCard({
                     <div>
 
                         <p className="text-xs uppercase tracking-widest text-slate-400">
-                            Starting From
+                            {t("startingFrom")}
                         </p>
 
                         <h4 className="text-2xl font-black text-amber-400 md:text-3xl">
@@ -99,7 +109,7 @@ export default function PropertyCard({
 
                 <div className="flex flex-wrap gap-2">
 
-                    {property.badges.map((badge) => (
+                    {badges.map((badge) => (
                         <span
                             key={badge}
                             className="rounded-full border border-amber-400/20 bg-amber-400/10 px-3 py-1 text-[11px] font-medium text-amber-300"
@@ -114,10 +124,10 @@ export default function PropertyCard({
 
                 <Link
                     href={`/property/${property.id}`}
-                    aria-label={`View details for ${property.title}`}
+                    aria-label={`View details for ${title}`}
                     className="flex w-full items-center justify-center gap-2 rounded-2xl bg-amber-400 py-3 font-bold text-slate-900 transition hover:bg-amber-300 active:scale-95"
                 >
-                    View Property
+                    {t("viewProperty")}
 
                     <ArrowRight size={18} />
                 </Link>

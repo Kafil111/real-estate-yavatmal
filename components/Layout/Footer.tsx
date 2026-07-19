@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import {
     Phone,
     MapPin,
@@ -9,6 +10,7 @@ import {
 } from "lucide-react";
 
 export default function Footer() {
+    const t = useTranslations("Footer");
     return (
         <footer className="border-t border-white/10 bg-[#020611]">
 
@@ -30,10 +32,8 @@ export default function Footer() {
 
                         </h2>
 
-                        <p className="mt-6 max-w-md leading-8 text-slate-400">
-                            Your trusted partner for agricultural land,
-                            residential plots and premium investment
-                            opportunities across Yavatmal.
+                        <p className="mt-6 leading-8 text-slate-400">
+                            {t("tagline")}
                         </p>
 
                     </div>
@@ -43,25 +43,25 @@ export default function Footer() {
                     <div>
 
                         <h3 className="text-xl font-bold text-white">
-                            Quick Links
+                            {t("quickLinks")}
                         </h3>
 
                         <div className="mt-6 flex flex-col gap-4">
 
                             <a href="/#home" className="text-slate-400 hover:text-amber-400">
-                                Home
+                                {t("home")}
                             </a>
 
                             <a href="/#properties" className="text-slate-400 hover:text-amber-400">
-                                Properties
+                                {t("properties")}
                             </a>
 
                             <a href="/#about" className="text-slate-400 hover:text-amber-400">
-                                About
+                                {t("about")}
                             </a>
 
                             <a href="/#contact" className="text-slate-400 hover:text-amber-400">
-                                Contact
+                                {t("contact")}
                             </a>
 
                         </div>
@@ -73,18 +73,18 @@ export default function Footer() {
                     <div>
 
                         <h3 className="text-xl font-bold text-white">
-                            Property Types
+                            {t("propertyTypes")}
                         </h3>
 
                         <div className="mt-6 flex flex-col gap-4 text-slate-400">
 
-                            <p>Agricultural Land</p>
+                            <p>{t("agriculturalLand")}</p>
 
-                            <p>Residential Plots</p>
+                            <p>{t("residentialPlots")}</p>
 
-                            <p>Commercial Property</p>
+                            <p>{t("commercialProperty")}</p>
 
-                            <p>Investment Land</p>
+                            <p>{t("investmentLand")}</p>
 
                         </div>
 
@@ -95,7 +95,7 @@ export default function Footer() {
                     <div>
 
                         <h3 className="text-xl font-bold text-white">
-                            Contact
+                            {t("contactHeading")}
                         </h3>
 
                         <div className="mt-6 space-y-5">
@@ -119,7 +119,7 @@ export default function Footer() {
                                 className="flex items-center gap-3 text-slate-400 hover:text-amber-400 transition"
                             >
                                 <MessageCircle size={18} />
-                                WhatsApp Us
+                                {t("whatsappUs")}
                             </a>
 
                         </div>
@@ -128,7 +128,7 @@ export default function Footer() {
 
                             <MapPin size={18} />
 
-                            Yavatmal, Maharashtra
+                            {t("locationValue")}
 
                         </div>
 
@@ -165,14 +165,14 @@ export default function Footer() {
             <div className="mt-16 flex flex-col items-center justify-between gap-6 border-t border-white/10 pt-8 md:flex-row">
 
                 <p className="text-sm text-slate-400">
-                    © 2026 Real Estate Yavatmal. All Rights Reserved.
+                    © 2026 Real Estate Yavatmal. {t("allRightsReserved")}
                 </p>
 
                 <button
                     onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
                     className="flex items-center gap-2 rounded-full border border-white/10 px-5 py-2 text-slate-300 transition hover:border-amber-400 hover:text-amber-400"
                 >
-                    Back to Top
+                    {t("backToTop")}
 
                     <ArrowUp size={18} />
 

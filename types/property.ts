@@ -1,11 +1,17 @@
+type LocalizedText = {
+    en: string;
+    hi: string;
+    mr: string;
+};
+
 export type Property = {
     id: string;
 
-    title: string;
+    title: LocalizedText;
 
     type: string;
 
-    location: string;
+    location: LocalizedText;
 
     area: string;
 
@@ -21,11 +27,11 @@ export type Property = {
 
     available: boolean;
 
-    badges: string[];
+    badges: LocalizedText[];
 
-    highlights: string[];
+    highlights: LocalizedText[];
 
-    description: string;
+    description: LocalizedText;
 
     mapUrl: string;
 

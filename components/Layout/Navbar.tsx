@@ -1,18 +1,43 @@
 "use client";
-
+import { useTranslations, useLocale } from "next-intl";
+import { usePathname, useRouter } from "next/navigation";
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-const links = [
-    { name: "Home", href: "/#home" },
-    { name: "Properties", href: "/#properties" },
-    { name: "About", href: "/#about" },
-    { name: "Contact", href: "/#contact" },
-];
-
 export default function Navbar() {
+    const t = useTranslations("Navbar");
+    const tLang = useTranslations("LanguageSwitcher");
+    const locale = useLocale();
+    const pathname = usePathname();
+    const router = useRouter();
+
+    const switchLocale = (newLocale: string) => {
+        const segments = pathname.split("/");
+        const currentLocalePrefixes = ["en", "hi", "mr"];
+
+        if (currentLocalePrefixes.includes(segments[1])) {
+            segments[1] = newLocale;
+        } else {
+            segments.splice(1, 0, newLocale);
+        }
+
+        let newPath = segments.join("/") || "/";
+
+        if (newLocale === "en") {
+            newPath = newPath.replace(/^\/en/, "") || "/";
+        }
+
+        router.push(newPath);
+    };
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+    const links = [
+        { name: t("home"), href: "/#home" },
+        { name: t("properties"), href: "/#properties" },
+        { name: t("about"), href: "/#about" },
+        { name: t("contact"), href: "/#contact" },
+    ];
 
     return (
         <header className="fixed inset-x-0 top-0 z-50 transition-all duration-300">
@@ -40,15 +65,25 @@ export default function Navbar() {
 
                     <div className="hidden items-center gap-10 md:flex">
                         {links.map((link) => (
-                            <Link
-                                key={link.name}
+
+                            <a key={link.name}
                                 href={link.href}
                                 className="text-lg font-medium text-slate-200 transition-all duration-300 hover:text-amber-400 hover:-translate-y-0.5"
-                                onClick={() => setIsMenuOpen(false)}
                             >
                                 {link.name}
-                            </Link>
+                            </a>
                         ))}
+
+                        <select
+                            aria-label={tLang("language")}
+                            value={locale}
+                            onChange={(e) => switchLocale(e.target.value)}
+                            className="rounded-lg border border-white/20 bg-slate-800 px-3 py-2 text-sm text-white outline-none"
+                        >
+                            <option value="en">EN</option>
+                            <option value="hi">हिंदी</option>
+                            <option value="mr">मराठी</option>
+                        </select>
                     </div>
 
                     {/* Mobile Menu Button */}
@@ -80,26 +115,34 @@ export default function Navbar() {
 
                 {/* Mobile Dropdown Panel */}
 
-                {
-                    isMenuOpen && (
-                        <div className="mt-2 rounded-2xl border border-white/10 bg-slate-900/90 backdrop-blur-2xl p-4 shadow-2xl md:hidden">
-                            <div className="flex flex-col gap-1">
-                                {links.map((link) => (
-                                    <Link
-                                        key={link.name}
-                                        href={link.href}
-                                        onClick={() => setIsMenuOpen(false)}
-                                        className="rounded-lg px-3 py-3 text-base font-medium text-slate-200 transition hover:bg-white/5 hover:text-amber-400"
-                                    >
-                                        {link.name}
-                                    </Link>
-                                ))}
-                            </div>
-                        </div >
-                    )
-                }
+                {isMenuOpen && (
+                    <div className="mt-2 rounded-2xl border border-white/10 bg-slate-900/90 backdrop-blur-2xl p-4 shadow-2xl md:hidden">
+                        <div className="flex flex-col gap-1">
+                            {links.map((link) => (
+                                <a
+                                    key={link.name}
+                                    href={link.href}
+                                    className="text-lg font-medium text-slate-200 transition-all duration-300 hover:text-amber-400 hover:-translate-y-0.5"
+                                >
+                                    {link.name}
+                                </a>
+                            ))}
 
-            </div >
-        </header >
+                            <select
+                                aria-label={tLang("language")}
+                                value={locale}
+                                onChange={(e) => switchLocale(e.target.value)}
+                                className="mt-2 rounded-lg border border-white/20 bg-slate-800 px-3 py-3 text-base text-white outline-none"
+                            >
+                                <option value="en">English</option>
+                                <option value="hi">हिंदी</option>
+                                <option value="mr">मराठी</option>
+                            </select>
+                        </div>
+                    </div>
+                )}
+
+            </div>
+        </header>
     );
 }

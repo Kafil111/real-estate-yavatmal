@@ -1,31 +1,34 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import { Home, Users, MapPinned, Award } from "lucide-react";
 
-const stats = [
-    {
-        icon: Home,
-        value: "500+",
-        label: "Verified Properties",
-    },
-    {
-        icon: Users,
-        value: "350+",
-        label: "Happy Clients",
-    },
-    {
-        icon: MapPinned,
-        value: "25+",
-        label: "Prime Locations",
-    },
-    {
-        icon: Award,
-        value: "8+",
-        label: "Years of Trust",
-    },
-];
-
 export default function StatsSection() {
+    const t = useTranslations("StatsSection");
+
+    const stats = [
+        {
+            icon: Home,
+            value: "500+",
+            label: t("verifiedProperties"),
+        },
+        {
+            icon: Users,
+            value: "350+",
+            label: t("happyClients"),
+        },
+        {
+            icon: MapPinned,
+            value: "25+",
+            label: t("primeLocations"),
+        },
+        {
+            icon: Award,
+            value: "8+",
+            label: t("yearsOfTrust"),
+        },
+    ];
+
     return (
         <section className="relative overflow-hidden bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 py-16 md:py-24">
 
@@ -38,17 +41,15 @@ export default function StatsSection() {
                 <div className="mx-auto max-w-3xl text-center">
 
                     <p className="text-sm font-bold uppercase tracking-[0.35em] text-amber-400">
-                        OUR ACHIEVEMENTS
+                        {t("ourAchievements")}
                     </p>
 
                     <h2 className="mt-5 text-5xl font-black text-white">
-                        Numbers That Build Confidence
+                        {t("heading")}
                     </h2>
 
                     <p className="mt-6 text-lg leading-8 text-slate-400">
-                        Every successful transaction strengthens our commitment
-                        to helping families and investors make confident real
-                        estate decisions.
+                        {t("description")}
                     </p>
 
                 </div>

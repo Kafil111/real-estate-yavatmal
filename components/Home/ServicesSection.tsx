@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import {
     Tractor,
     Home,
@@ -9,52 +10,48 @@ import {
     ArrowRight,
 } from "lucide-react";
 
-const services = [
-    {
-        icon: Tractor,
-        title: "Agricultural Land",
-        description:
-            "Premium road-touch agricultural land with clear title and excellent future appreciation.",
-        href: "#properties",
-    },
-    {
-        icon: Home,
-        title: "Residential Plots",
-        description:
-            "Residential plots in rapidly developing areas with excellent connectivity.",
-        href: "#properties",
-    },
-    {
-        icon: Building2,
-        title: "Commercial Properties",
-        description:
-            "Commercial plots and investment opportunities at strategic locations.",
-        href: "#properties",
-    },
-    {
-        icon: FileCheck,
-        title: "Documentation",
-        description:
-            "Complete assistance with registration, verification and legal documentation.",
-        href: "#contact",
-    },
-    {
-        icon: BadgeDollarSign,
-        title: "Investment Advisory",
-        description:
-            "Expert guidance to maximize your real estate investment returns.",
-        href: "#contact",
-    },
-    {
-        icon: ArrowRight,
-        title: "Property Resale",
-        description:
-            "Professional resale assistance to help you achieve the best market value.",
-        href: "#contact",
-    },
-];
-
 export default function ServicesSection() {
+    const t = useTranslations("ServicesSection");
+
+    const services = [
+        {
+            icon: Tractor,
+            title: t("service1Title"),
+            description: t("service1Description"),
+            href: "#properties",
+        },
+        {
+            icon: Home,
+            title: t("service2Title"),
+            description: t("service2Description"),
+            href: "#properties",
+        },
+        {
+            icon: Building2,
+            title: t("service3Title"),
+            description: t("service3Description"),
+            href: "#properties",
+        },
+        {
+            icon: FileCheck,
+            title: t("service4Title"),
+            description: t("service4Description"),
+            href: "#contact",
+        },
+        {
+            icon: BadgeDollarSign,
+            title: t("service5Title"),
+            description: t("service5Description"),
+            href: "#contact",
+        },
+        {
+            icon: ArrowRight,
+            title: t("service6Title"),
+            description: t("service6Description"),
+            href: "#contact",
+        },
+    ];
+
     return (
         <section className="bg-slate-900 py-28">
 
@@ -63,16 +60,15 @@ export default function ServicesSection() {
                 <div className="mx-auto max-w-3xl text-center">
 
                     <p className="text-sm font-bold uppercase tracking-[0.35em] text-amber-400">
-                        OUR SERVICES
+                        {t("ourServices")}
                     </p>
 
                     <h2 className="mt-5 text-5xl font-black text-white">
-                        Everything You Need
+                        {t("heading")}
                     </h2>
 
                     <p className="mt-6 text-lg leading-8 text-slate-400">
-                        From finding the perfect property to completing legal documentation,
-                        we guide you throughout the entire journey.
+                        {t("description")}
                     </p>
 
                 </div>
@@ -110,7 +106,7 @@ export default function ServicesSection() {
 
                                     <a href={service.href} aria-label={`Learn more about ${service.title}`} className="mt-8 flex items-center gap-2 font-semibold text-amber-400 transition group-hover:gap-4">
 
-                                        Learn More
+                                        {t("learnMore")}
 
                                         <ArrowRight size={18} />
 

@@ -3,12 +3,15 @@ import Footer from "@/components/Layout/Footer";
 import FloatingButtons from "@/components/Layout/FloatingButtons";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
+import { getTranslations } from "next-intl/server";
+import { getLocalizedText } from "@/lib/getLocalizedText";
 import PropertyCard from "@/components/Properties/PropertyCard";
 import PropertyGallery from "@/components/Properties/PropertyGallery";
 import { properties } from "@/data/properties";
 
 type PageProps = {
     params: Promise<{
+        locale: string;
         id: string;
     }>;
 };
@@ -16,7 +19,7 @@ type PageProps = {
 export async function generateMetadata({
     params,
 }: PageProps): Promise<Metadata> {
-    const { id } = await params;
+    const { id, locale } = await params;
 
     const property = properties.find((p) => p.id === id);
 
@@ -26,18 +29,21 @@ export async function generateMetadata({
         };
     }
 
+    const title = getLocalizedText(property.title, locale);
+    const description = getLocalizedText(property.description, locale);
+
     return {
-        title: property.title,
-        description: property.description,
+        title,
+        description,
         openGraph: {
-            title: property.title,
-            description: property.description,
+            title,
+            description,
             images: [
                 {
                     url: property.image,
                     width: 1200,
                     height: 800,
-                    alt: property.title,
+                    alt: title,
                 },
             ],
             type: "website",
@@ -48,7 +54,8 @@ export async function generateMetadata({
 export default async function PropertyPage({
     params,
 }: PageProps) {
-    const { id } = await params;
+    const { id, locale } = await params;
+    const t = await getTranslations("PropertyDetail");
 
     const property = properties.find(
         (p) => p.id === id
@@ -57,6 +64,11 @@ export default async function PropertyPage({
     if (!property) {
         notFound();
     }
+
+    const title = getLocalizedText(property.title, locale);
+    const location = getLocalizedText(property.location, locale);
+    const description = getLocalizedText(property.description, locale);
+    const highlights = property.highlights.map((h) => getLocalizedText(h, locale));
 
     const relatedProperties = properties
         .filter(
@@ -101,7 +113,7 @@ export default async function PropertyPage({
                 <div className="mx-auto max-w-6xl overflow-hidden rounded-3xl border border-white/10 bg-slate-900 shadow-xl">
                     <PropertyGallery
                         images={property.gallery}
-                        title={property.title}
+                        title={title}
                         code={property.id}
                     />
 
@@ -112,11 +124,11 @@ export default async function PropertyPage({
                         <div className="flex flex-wrap items-center gap-3">
 
                             <span className="rounded-full bg-amber-400 px-4 py-2 text-sm font-bold text-slate-900">
-                                ⭐ FEATURED
+                                ⭐ {t("featured")}
                             </span>
 
                             <span className="rounded-full bg-green-400/10 px-4 py-2 text-sm font-semibold text-green-400">
-                                Available
+                                {t("available")}
                             </span>
 
                         </div>
@@ -124,11 +136,11 @@ export default async function PropertyPage({
                         {/* Title */}
 
                         <h1 className="mt-6 text-4xl font-black text-white md:text-5xl">
-                            {property.title}
+                            {title}
                         </h1>
 
                         <p className="mt-4 text-lg text-slate-400">
-                            📍 {property.location}
+                            📍 {location}
                         </p>
 
                         {/* Property Specifications */}
@@ -138,7 +150,7 @@ export default async function PropertyPage({
                             <div className="rounded-2xl border border-white/10 bg-slate-800 p-6">
 
                                 <p className="text-sm text-slate-400">
-                                    Property ID
+                                    {t("propertyId")}
                                 </p>
 
                                 <h3 className="mt-2 text-2xl font-bold text-white">
@@ -150,7 +162,7 @@ export default async function PropertyPage({
                             <div className="rounded-2xl border border-white/10 bg-slate-800 p-6">
 
                                 <p className="text-sm text-slate-400">
-                                    Property Type
+                                    {t("propertyType")}
                                 </p>
 
                                 <h3 className="mt-2 text-2xl font-bold text-white">
@@ -162,7 +174,7 @@ export default async function PropertyPage({
                             <div className="rounded-2xl border border-white/10 bg-slate-800 p-6">
 
                                 <p className="text-sm text-slate-400">
-                                    Area
+                                    {t("area")}
                                 </p>
 
                                 <h3 className="mt-2 text-2xl font-bold text-white">
@@ -174,7 +186,7 @@ export default async function PropertyPage({
                             <div className="rounded-2xl border border-white/10 bg-slate-800 p-6">
 
                                 <p className="text-sm text-slate-400">
-                                    Total Price
+                                    {t("totalPrice")}
                                 </p>
 
                                 <h3 className="mt-2 text-2xl font-bold text-amber-400">
@@ -192,15 +204,11 @@ export default async function PropertyPage({
                             <div className="rounded-3xl border border-white/10 bg-slate-800 p-8">
 
                                 <h2 className="text-3xl font-bold text-white">
-                                    Interested in this property?
+                                    {t("interestedHeading")}
                                 </h2>
 
                                 <p className="mt-4 text-slate-400">
-                                    Schedule your site visit today.
-                                    We will provide complete property
-                                    documents, legal verification and
-                                    assist you throughout the buying
-                                    process.
+                                    {t("interestedDescription")}
                                 </p>
 
                                 <div className="mt-8 flex flex-wrap gap-4">
@@ -209,7 +217,7 @@ export default async function PropertyPage({
                                         href={`tel:${property.contact.phone}`}
                                         className="rounded-xl bg-green-600 px-8 py-4 font-semibold text-white transition hover:bg-green-700"
                                     >
-                                        📞 Call Now
+                                        📞 {t("callNow")}
                                     </a>
 
                                     <a
@@ -218,7 +226,7 @@ export default async function PropertyPage({
                                         rel="noopener noreferrer"
                                         className="rounded-xl bg-green-500 px-8 py-4 font-semibold text-white transition hover:bg-green-600"
                                     >
-                                        💬 WhatsApp
+                                        💬 {t("whatsapp")}
                                     </a>
 
                                 </div>
@@ -228,7 +236,7 @@ export default async function PropertyPage({
                             <div className="rounded-3xl bg-amber-400 p-8">
 
                                 <p className="text-sm font-semibold uppercase text-slate-900/70">
-                                    Property Price
+                                    {t("propertyPrice")}
                                 </p>
 
                                 <h2 className="mt-2 text-5xl font-black text-slate-900">
@@ -242,7 +250,7 @@ export default async function PropertyPage({
                                 <div className="mt-8 rounded-2xl bg-slate-900/10 p-5">
 
                                     <p className="text-sm text-slate-900/70">
-                                        Property Code
+                                        {t("propertyCode")}
                                     </p>
 
                                     <h3 className="text-2xl font-bold text-slate-900">
@@ -260,12 +268,12 @@ export default async function PropertyPage({
                         <section className="mt-16">
 
                             <h2 className="mb-6 text-3xl font-bold text-white">
-                                Property Highlights
+                                {t("highlights")}
                             </h2>
 
                             <div className="grid gap-4 md:grid-cols-2">
 
-                                {property.highlights.map((item) => (
+                                {highlights.map((item) => (
                                     <div
                                         key={item}
                                         className="rounded-xl border border-white/10 bg-slate-800 p-5 text-slate-200"
@@ -283,11 +291,11 @@ export default async function PropertyPage({
                         <section className="mt-16">
 
                             <h2 className="mb-6 text-3xl font-bold text-white">
-                                Description
+                                {t("description")}
                             </h2>
 
                             <p className="leading-8 text-slate-400">
-                                {property.description}
+                                {description}
                             </p>
 
                         </section>
@@ -297,13 +305,14 @@ export default async function PropertyPage({
                         <section className="mt-16">
 
                             <h2 className="mb-6 text-3xl font-bold text-white">
-                                Property Location
+                                {t("propertyLocation")}
                             </h2>
 
                             <div className="overflow-hidden rounded-3xl border border-white/10">
 
                                 <iframe
                                     src={property.mapUrl}
+                                    title={`${t("mapTitle")} ${title}`}
                                     width="100%"
                                     height="450"
                                     loading="lazy"
@@ -321,7 +330,7 @@ export default async function PropertyPage({
                         <section className="mt-16">
 
                             <h2 className="mb-6 text-3xl font-bold text-white">
-                                Nearby Distances
+                                {t("nearbyDistances")}
                             </h2>
 
                             <div className="grid gap-4 md:grid-cols-2">
@@ -360,12 +369,11 @@ export default async function PropertyPage({
                                 <div className="mb-10">
 
                                     <h2 className="text-4xl font-black text-white">
-                                        Similar Properties
+                                        {t("similarProperties")}
                                     </h2>
 
                                     <p className="mt-3 text-slate-400">
-                                        You may also be interested in these
-                                        properties.
+                                        {t("similarPropertiesDescription")}
                                     </p>
 
                                 </div>
@@ -391,7 +399,7 @@ export default async function PropertyPage({
 
                 </div>
 
-            </main>
+            </main >
 
             <Footer />
 

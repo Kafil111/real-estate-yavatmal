@@ -1,33 +1,33 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import {
     Quote,
     Star,
     ArrowRight,
 } from "lucide-react";
 
-const testimonials = [
-    {
-        name: "Rahul Patil",
-        place: "Yavatmal",
-        review:
-            "Very professional service. They helped us purchase agricultural land with complete documentation.",
-    },
-    {
-        name: "Anjali Deshmukh",
-        place: "Babulgaon",
-        review:
-            "Transparent pricing and genuine advice. I highly recommend Real Estate Yavatmal.",
-    },
-    {
-        name: "Imran Shaikh",
-        place: "Pandharkawada",
-        review:
-            "Excellent support from property visit to registration. Everything was handled smoothly.",
-    },
-];
-
 export default function Testimonials() {
+    const t = useTranslations("Testimonials");
+
+    const testimonials = [
+        {
+            name: "Rahul Patil",
+            place: "Yavatmal",
+            review: t("review1"),
+        },
+        {
+            name: "Anjali Deshmukh",
+            place: "Babulgaon",
+            review: t("review2"),
+        },
+        {
+            name: "Imran Shaikh",
+            place: "Pandharkawada",
+            review: t("review3"),
+        },
+    ];
+
     return (
         <section className="bg-[#030817] py-20 md:py-28">
 
@@ -38,16 +38,15 @@ export default function Testimonials() {
                 <div className="mx-auto max-w-3xl text-center">
 
                     <p className="text-sm font-bold uppercase tracking-[0.35em] text-amber-400">
-                        CLIENT TESTIMONIALS
+                        {t("clientTestimonials")}
                     </p>
 
                     <h2 className="mt-5 text-4xl font-black text-white md:text-6xl">
-                        Trusted By Families Across Yavatmal
+                        {t("heading")}
                     </h2>
 
                     <p className="mt-6 text-lg leading-8 text-slate-400">
-                        Our biggest achievement isn't selling land —
-                        it's earning lifelong trust from our clients.
+                        {t("description")}
                     </p>
 
                 </div>

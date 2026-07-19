@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import {
     Phone,
     MapPin,
@@ -9,6 +10,8 @@ import {
 } from "lucide-react";
 
 export default function ContactSection() {
+    const t = useTranslations("ContactSection");
+
     return (
         <section
             id="contact"
@@ -19,17 +22,15 @@ export default function ContactSection() {
                 <div className="mb-16 text-center">
 
                     <p className="text-sm font-bold uppercase tracking-[0.35em] text-amber-400">
-                        CONTACT US
+                        {t("contactUs")}
                     </p>
 
                     <h2 className="mt-5 text-4xl font-black text-white md:text-6xl">
-                        Let's Find Your Dream Property
+                        {t("heading")}
                     </h2>
 
                     <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-slate-400">
-                        Whether you're looking for agricultural land,
-                        residential plots or investment opportunities,
-                        we're here to help.
+                        {t("description")}
                     </p>
 
                 </div>
@@ -43,23 +44,23 @@ export default function ContactSection() {
                         {[
                             {
                                 icon: Phone,
-                                title: "Call Us",
-                                value: "+91 96575 94144",
+                                title: t("callUs"),
+                                value: "+91 87933 98909",
                             },
                             {
                                 icon: MessageCircle,
-                                title: "WhatsApp",
-                                value: "+91 96575 94144",
+                                title: t("whatsapp"),
+                                value: "+91 87933 98909",
                             },
                             {
                                 icon: MapPin,
-                                title: "Location",
-                                value: "Yavatmal, Maharashtra",
+                                title: t("location"),
+                                value: t("locationValue"),
                             },
                             {
                                 icon: Clock3,
-                                title: "Availability",
-                                value: "Monday - Sunday | 9 AM - 8 PM",
+                                title: t("availability"),
+                                value: t("availabilityValue"),
                             },
                         ].map((item) => {
 
@@ -103,41 +104,41 @@ export default function ContactSection() {
                     <div className="rounded-3xl border border-white/10 bg-slate-900/70 p-8 backdrop-blur-xl">
 
                         <h3 className="text-3xl font-bold text-white">
-                            Send an Enquiry
+                            {t("sendEnquiry")}
                         </h3>
 
                         <p className="mt-3 text-slate-400">
-                            Fill out the form below and we'll contact you shortly.
+                            {t("formIntro")}
                         </p>
 
                         <div className="mt-8 space-y-5">
 
                             <input
-                                placeholder="Your Name"
+                                placeholder={t("yourName")}
                                 className="w-full rounded-2xl border border-white/10 bg-slate-800 p-4 text-white outline-none placeholder:text-slate-500 focus:border-amber-400"
                             />
 
                             <input
-                                placeholder="Mobile Number"
+                                placeholder={t("mobileNumber")}
                                 className="w-full rounded-2xl border border-white/10 bg-slate-800 p-4 text-white outline-none placeholder:text-slate-500 focus:border-amber-400"
                             />
 
                             <select aria-label="Property type of interest" className="w-full rounded-2xl border border-white/10 bg-slate-800 p-4 text-white outline-none focus:border-amber-400">
 
-                                <option>Agricultural Land</option>
-                                <option>Residential Plot</option>
-                                <option>Commercial Property</option>
+                                <option>{t("agriculturalLand")}</option>
+                                <option>{t("residentialPlot")}</option>
+                                <option>{t("commercialProperty")}</option>
 
                             </select>
 
                             <input
-                                placeholder="Budget"
+                                placeholder={t("budget")}
                                 className="w-full rounded-2xl border border-white/10 bg-slate-800 p-4 text-white outline-none placeholder:text-slate-500 focus:border-amber-400"
                             />
 
                             <textarea
                                 rows={5}
-                                placeholder="Tell us about your requirement..."
+                                placeholder={t("requirementPlaceholder")}
                                 className="w-full rounded-2xl border border-white/10 bg-slate-800 p-4 text-white outline-none placeholder:text-slate-500 focus:border-amber-400"
                             />
 
@@ -145,7 +146,7 @@ export default function ContactSection() {
 
                                 <Send size={20} />
 
-                                Send Enquiry
+                                {t("sendEnquiryButton")}
 
                             </button>
 

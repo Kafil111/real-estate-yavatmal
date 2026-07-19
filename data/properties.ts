@@ -3,341 +3,307 @@ import { Property } from "@/types/property";
 export const properties: Property[] = [
     {
         id: "W-323",
-
-        title: "5 Acre Dambar Road Touch Agricultural Land",
-
+        title: {
+            en: "5 Acre Dambar Road Touch Agricultural Land",
+            hi: "5 एकड़ डामर रोड-टच कृषि भूमि",
+            mr: "५ एकर डांबरी रोड-टच शेतजमीन",
+        },
         type: "Agricultural Land",
-
-        location: "Babulgaon, Tal. Babulgaon, Dist. Yavatmal",
-
+        location: {
+            en: "Babulgaon, Tal. Babulgaon, Dist. Yavatmal",
+            hi: "बाबुलगांव, ता. बाबुलगांव, जि. यवतमाल",
+            mr: "बाबुळगाव, ता. बाबुळगाव, जि. यवतमाळ",
+        },
         area: "5 Acre",
-
         price: "₹9 Lakh / Acre",
-
         totalPrice: "₹45 Lakh",
-
         image: "/properties/w323/main.jpg",
-
         gallery: [
             "/properties/w323/main.jpg",
             "/properties/w323/photo1.jpg",
             "/properties/w323/photo2.jpg",
             "/properties/w323/photo3.jpg",
         ],
-
         featured: true,
-
         available: true,
-
         badges: [
-            "Road Touch",
-            "Low Budget",
-            "Investment",
+            { en: "Road Touch", hi: "रोड टच", mr: "रोड टच" },
+            { en: "Low Budget", hi: "लो बजट", mr: "कमी बजेट" },
+            { en: "Investment", hi: "निवेश", mr: "गुंतवणूक" },
         ],
-
         highlights: [
-            "5 Acre Clear Agricultural Land",
-            "Road Touch",
-            "Excellent Frontage",
-            "Electricity Nearby",
+            { en: "5 Acre Clear Agricultural Land", hi: "5 एकड़ स्वच्छ कृषि भूमि", mr: "५ एकर मोकळी शेतजमीन" },
+            { en: "Road Touch", hi: "रोड टच", mr: "रोड टच" },
+            { en: "Excellent Frontage", hi: "बेहतरीन फ्रंटेज", mr: "उत्तम फ्रंटेज" },
+            { en: "Electricity Nearby", hi: "पास में बिजली", mr: "जवळ वीज उपलब्ध" },
         ],
-
-        description:
-            "Beautiful low budget agricultural land located near Babulgaon. Excellent investment opportunity.",
-        mapUrl:
-            "https://www.google.com/maps?q=Yavatmal&output=embed",
-
+        description: {
+            en: "Beautiful low budget agricultural land located near Babulgaon. Excellent investment opportunity.",
+            hi: "बाबुलगांव के पास स्थित सुंदर लो-बजट कृषि भूमि। बेहतरीन निवेश अवसर।",
+            mr: "बाबुळगावजवळ असलेली सुंदर कमी बजेटची शेतजमीन. उत्तम गुंतवणुकीची संधी.",
+        },
+        mapUrl: "https://www.google.com/maps?q=Yavatmal&output=embed",
         distances: {
             Yavatmal: "22 km",
             Babulgaon: "15 km",
             Highway: "3 km",
         },
-
         contact: {
-            phone: "96575 94144",
-            whatsapp: "9196575 94144",
+            phone: "8793398909",
+            whatsapp: "918793398909",
         },
     },
-
     {
         id: "W-324",
-
-        title: "3 Acre Highway Touch Farm Land",
-
+        title: {
+            en: "3 Acre Highway Touch Farm Land",
+            hi: "3 एकड़ हाईवे-टच फार्म लैंड",
+            mr: "३ एकर हायवे-टच शेतजमीन",
+        },
         type: "Agricultural Land",
-
-        location: "Kalamb Road, Yavatmal",
-
+        location: {
+            en: "Kalamb Road, Yavatmal",
+            hi: "कलंब रोड, यवतमाल",
+            mr: "कळंब रोड, यवतमाळ",
+        },
         area: "3 Acre",
-
         price: "₹8 Lakh / Acre",
-
         totalPrice: "₹24 Lakh",
-
         image: "/properties/w323/photo1.jpg",
-
         gallery: [
             "/properties/w323/photo1.jpg",
             "/properties/w323/photo2.jpg",
             "/properties/w323/photo3.jpg",
             "/properties/w323/main.jpg",
         ],
-
         featured: true,
-
         available: true,
-
         badges: [
-            "Highway Touch",
-            "Future Growth",
-            "Investment",
+            { en: "Highway Touch", hi: "हाईवे टच", mr: "हायवे टच" },
+            { en: "Future Growth", hi: "भविष्य में विकास", mr: "भविष्यातील वाढ" },
+            { en: "Investment", hi: "निवेश", mr: "गुंतवणूक" },
         ],
-
         highlights: [
-            "Prime Location",
-            "Road Access",
-            "Clear Title",
+            { en: "Prime Location", hi: "प्राइम लोकेशन", mr: "मोक्याचे ठिकाण" },
+            { en: "Road Access", hi: "रोड एक्सेस", mr: "रस्ता उपलब्धता" },
+            { en: "Clear Title", hi: "स्वच्छ टाइटल", mr: "स्वच्छ मालकी हक्क" },
         ],
-
-        description:
-            "Highway touch agricultural land with huge appreciation potential.",
-        mapUrl:
-            "https://www.google.com/maps?q=Yavatmal&output=embed",
-
+        description: {
+            en: "Highway touch agricultural land with huge appreciation potential.",
+            hi: "जबरदस्त वैल्यू ग्रोथ की संभावना वाली हाईवे-टच कृषि भूमि।",
+            mr: "प्रचंड वाढीच्या संधी असलेली हायवे-टच शेतजमीन.",
+        },
+        mapUrl: "https://www.google.com/maps?q=Yavatmal&output=embed",
         distances: {
             Yavatmal: "18 km",
             Kalamb: "6 km",
             Highway: "0 km",
         },
-
         contact: {
-            phone: "96575 94144",
-            whatsapp: "9196575 94144",
+            phone: "8793398909",
+            whatsapp: "918793398909",
         },
     },
-
     {
         id: "W-325",
-
-        title: "Residential Plot Near City",
-
+        title: {
+            en: "Residential Plot Near City",
+            hi: "शहर के पास रेजिडेंशियल प्लॉट",
+            mr: "शहराजवळ निवासी प्लॉट",
+        },
         type: "Residential",
-
-        location: "Yavatmal City",
-
+        location: {
+            en: "Yavatmal City",
+            hi: "यवतमाल शहर",
+            mr: "यवतमाळ शहर",
+        },
         area: "2200 Sq.ft",
-
         price: "₹18 Lakh",
-
         totalPrice: "₹18 Lakh",
-
         image: "/properties/w323/photo2.jpg",
-
         gallery: [
             "/properties/w323/photo2.jpg",
             "/properties/w323/photo1.jpg",
             "/properties/w323/photo3.jpg",
             "/properties/w323/main.jpg",
         ],
-
         featured: true,
-
         available: true,
-
         badges: [
-            "NA Plot",
-            "Bank Loan",
-            "Ready Possession",
+            { en: "NA Plot", hi: "एनए प्लॉट", mr: "एनए प्लॉट" },
+            { en: "Bank Loan", hi: "बैंक लोन", mr: "बँक कर्ज" },
+            { en: "Ready Possession", hi: "रेडी पजेशन", mr: "ताबा तयार" },
         ],
-
         highlights: [
-            "Water Connection",
-            "Electricity",
-            "Corner Plot",
+            { en: "Water Connection", hi: "पानी कनेक्शन", mr: "पाणी जोडणी" },
+            { en: "Electricity", hi: "बिजली", mr: "वीज" },
+            { en: "Corner Plot", hi: "कॉर्नर प्लॉट", mr: "कॉर्नर प्लॉट" },
         ],
-
-        description:
-            "Premium residential plot inside a fast-growing locality of Yavatmal.",
-        mapUrl:
-            "https://www.google.com/maps?q=Yavatmal&output=embed",
+        description: {
+            en: "Premium residential plot inside a fast-growing locality of Yavatmal.",
+            hi: "यवतमाल के तेज़ी से विकसित हो रहे इलाके में प्रीमियम रेजिडेंशियल प्लॉट।",
+            mr: "यवतमाळच्या झपाट्याने विकसित होणाऱ्या भागातील दर्जेदार निवासी प्लॉट.",
+        },
+        mapUrl: "https://www.google.com/maps?q=Yavatmal&output=embed",
         distances: {
             BusStand: "3 km",
             Railway: "5 km",
             Hospital: "2 km",
         },
-
         contact: {
-            phone: "96575 94144",
-            whatsapp: "9196575 94144",
+            phone: "8793398909",
+            whatsapp: "918793398909",
         },
     },
-
     {
         id: "W-326",
-
-        title: "Commercial Plot on Main Road",
-
+        title: {
+            en: "Commercial Plot on Main Road",
+            hi: "मुख्य सड़क पर कमर्शियल प्लॉट",
+            mr: "मुख्य रस्त्यावर व्यावसायिक प्लॉट",
+        },
         type: "Commercial",
-
-        location: "Nagpur Highway",
-
+        location: {
+            en: "Nagpur Highway",
+            hi: "नागपुर हाईवे",
+            mr: "नागपूर हायवे",
+        },
         area: "4500 Sq.ft",
-
         price: "₹42 Lakh",
-
         totalPrice: "₹42 Lakh",
-
         image: "/properties/w323/photo3.jpg",
-
         gallery: [
             "/properties/w323/photo3.jpg",
             "/properties/w323/photo2.jpg",
             "/properties/w323/photo1.jpg",
             "/properties/w323/main.jpg",
         ],
-
         featured: true,
-
         available: true,
-
         badges: [
-            "Commercial",
-            "Road Touch",
-            "High Visibility",
+            { en: "Commercial", hi: "कमर्शियल", mr: "व्यावसायिक" },
+            { en: "Road Touch", hi: "रोड टच", mr: "रोड टच" },
+            { en: "High Visibility", hi: "हाई विज़िबिलिटी", mr: "उच्च दृश्यता" },
         ],
-
         highlights: [
-            "Prime Highway Location",
-            "Commercial Zone",
-            "Investment Ready",
+            { en: "Prime Highway Location", hi: "प्राइम हाईवे लोकेशन", mr: "मोक्याचे हायवे ठिकाण" },
+            { en: "Commercial Zone", hi: "कमर्शियल ज़ोन", mr: "व्यावसायिक क्षेत्र" },
+            { en: "Investment Ready", hi: "निवेश के लिए तैयार", mr: "गुंतवणुकीसाठी तयार" },
         ],
-
-        description:
-            "Commercial investment plot suitable for showroom, warehouse or business.",
-        mapUrl:
-            "https://www.google.com/maps?q=Yavatmal&output=embed",
-
+        description: {
+            en: "Commercial investment plot suitable for showroom, warehouse or business.",
+            hi: "शोरूम, गोदाम या व्यवसाय के लिए उपयुक्त कमर्शियल निवेश प्लॉट।",
+            mr: "शोरूम, गोदाम किंवा व्यवसायासाठी योग्य व्यावसायिक गुंतवणूक प्लॉट.",
+        },
+        mapUrl: "https://www.google.com/maps?q=Yavatmal&output=embed",
         distances: {
             Highway: "0 km",
             Yavatmal: "8 km",
         },
-
         contact: {
-            phone: "96575 94144",
-            whatsapp: "9196575 94144",
+            phone: "8793398909",
+            whatsapp: "918793398909",
         },
     },
-
     {
         id: "W-327",
-
-        title: "7 Acre Premium Farm Land",
-
+        title: {
+            en: "7 Acre Premium Farm Land",
+            hi: "7 एकड़ प्रीमियम फार्म लैंड",
+            mr: "७ एकर प्रीमियम शेतजमीन",
+        },
         type: "Agricultural Land",
-
-        location: "Arni Road",
-
+        location: {
+            en: "Arni Road",
+            hi: "अर्णी रोड",
+            mr: "अर्णी रोड",
+        },
         area: "7 Acre",
-
         price: "₹10 Lakh / Acre",
-
         totalPrice: "₹70 Lakh",
-
         image: "/properties/w323/main.jpg",
-
         gallery: [
             "/properties/w323/main.jpg",
             "/properties/w323/photo1.jpg",
             "/properties/w323/photo2.jpg",
             "/properties/w323/photo3.jpg",
         ],
-
         featured: true,
-
         available: true,
-
         badges: [
-            "Premium",
-            "Road Touch",
-            "Clear Title",
+            { en: "Premium", hi: "प्रीमियम", mr: "प्रीमियम" },
+            { en: "Road Touch", hi: "रोड टच", mr: "रोड टच" },
+            { en: "Clear Title", hi: "स्वच्छ टाइटल", mr: "स्वच्छ मालकी हक्क" },
         ],
-
         highlights: [
-            "Large Frontage",
-            "Ideal Investment",
-            "Peaceful Area",
+            { en: "Large Frontage", hi: "बड़ा फ्रंटेज", mr: "मोठा फ्रंटेज" },
+            { en: "Ideal Investment", hi: "आदर्श निवेश", mr: "आदर्श गुंतवणूक" },
+            { en: "Peaceful Area", hi: "शांत क्षेत्र", mr: "शांत परिसर" },
         ],
-
-        description:
-            "Premium agricultural land suitable for farming and long-term investment.",
-        mapUrl:
-            "https://www.google.com/maps?q=Yavatmal&output=embed",
-
+        description: {
+            en: "Premium agricultural land suitable for farming and long-term investment.",
+            hi: "खेती और दीर्घकालिक निवेश के लिए उपयुक्त प्रीमियम कृषि भूमि।",
+            mr: "शेती आणि दीर्घकालीन गुंतवणुकीसाठी योग्य दर्जेदार शेतजमीन.",
+        },
+        mapUrl: "https://www.google.com/maps?q=Yavatmal&output=embed",
         distances: {
             Arni: "12 km",
             Highway: "1 km",
         },
-
         contact: {
-            phone: "96575 94144",
-            whatsapp: "9196575 94144",
+            phone: "8793398909",
+            whatsapp: "918793398909",
         },
     },
-
     {
         id: "W-328",
-
-        title: "Low Budget Residential Plot",
-
+        title: {
+            en: "Low Budget Residential Plot",
+            hi: "लो बजट रेजिडेंशियल प्लॉट",
+            mr: "कमी बजेटचा निवासी प्लॉट",
+        },
         type: "Residential",
-
-        location: "Babulgaon",
-
+        location: {
+            en: "Babulgaon",
+            hi: "बाबुलगांव",
+            mr: "बाबुळगाव",
+        },
         area: "1800 Sq.ft",
-
         price: "₹12 Lakh",
-
         totalPrice: "₹12 Lakh",
-
         image: "/properties/w323/photo2.jpg",
-
         gallery: [
             "/properties/w323/photo2.jpg",
             "/properties/w323/photo3.jpg",
             "/properties/w323/photo1.jpg",
             "/properties/w323/main.jpg",
         ],
-
         featured: true,
-
         available: true,
-
         badges: [
-            "Affordable",
-            "Residential",
-            "Investment",
+            { en: "Affordable", hi: "किफायती", mr: "परवडणारे" },
+            { en: "Residential", hi: "रेजिडेंशियल", mr: "निवासी" },
+            { en: "Investment", hi: "निवेश", mr: "गुंतवणूक" },
         ],
-
         highlights: [
-            "Ready Registry",
-            "Water Available",
-            "Electricity",
+            { en: "Ready Registry", hi: "रेडी रजिस्ट्री", mr: "तयार नोंदणी" },
+            { en: "Water Available", hi: "पानी उपलब्ध", mr: "पाणी उपलब्ध" },
+            { en: "Electricity", hi: "बिजली", mr: "वीज" },
         ],
-
-        description:
-            "Affordable residential plot suitable for first-time buyers.",
-        mapUrl:
-            "https://www.google.com/maps?q=Yavatmal&output=embed",
-
+        description: {
+            en: "Affordable residential plot suitable for first-time buyers.",
+            hi: "पहली बार खरीदने वालों के लिए किफायती रेजिडेंशियल प्लॉट।",
+            mr: "प्रथमच खरेदी करणाऱ्यांसाठी परवडणारा निवासी प्लॉट.",
+        },
+        mapUrl: "https://www.google.com/maps?q=Yavatmal&output=embed",
         distances: {
             Babulgaon: "2 km",
             School: "1 km",
             Market: "1.5 km",
         },
-
         contact: {
-            phone: "96575 94144",
-            whatsapp: "9196575 94144",
+            phone: "8793398909",
+            whatsapp: "918793398909",
         },
     },
 ];

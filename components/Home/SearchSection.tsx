@@ -1,6 +1,9 @@
 "use client";
+import { useLocale } from "next-intl";
+import { getLocalizedText } from "@/lib/getLocalizedText";
 import { properties } from "@/data/properties";
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 
 import {
     Search,
@@ -17,6 +20,7 @@ type Props = {
 };
 
 export default function SearchSection({ onSearch }: Props) {
+    const t = useTranslations("Search");
     const [filters, setFilters] = useState<SearchFilters>({
         location: "",
         type: "",
@@ -33,8 +37,12 @@ export default function SearchSection({ onSearch }: Props) {
             [key]: value,
         }));
     }
+    const locale = useLocale();
+
     const uniqueLocations = Array.from(
-        new Set(properties.map((p) => p.location))
+        new Set(
+            properties.map((p) => getLocalizedText(p.location, locale))
+        )
     );
     return (
         <section className="relative z-30 px-6 py-16 md:py-24">
@@ -45,11 +53,11 @@ export default function SearchSection({ onSearch }: Props) {
                     <div className="mb-8">
 
                         <p className="text-sm font-bold uppercase tracking-[0.3em] text-amber-400">
-                            PROPERTY SEARCH
+                            {t("propertySearch")}
                         </p>
 
                         <h2 className="mt-3 text-4xl font-black text-white">
-                            Find Your Perfect Property
+                            {t("findYourPerfectProperty")}
                         </h2>
 
                     </div>
@@ -62,7 +70,7 @@ export default function SearchSection({ onSearch }: Props) {
 
                                 <MapPin size={16} />
 
-                                Location
+                                {t("location")}
 
                             </label>
 
@@ -71,7 +79,7 @@ export default function SearchSection({ onSearch }: Props) {
                                 onChange={(e) =>
                                     updateField("location", e.target.value)
                                 }
-                                placeholder="Yavatmal"
+                                placeholder={t("locationPlaceholder")}
                                 list="location-suggestions"
                                 className="w-full bg-transparent text-white outline-none placeholder:text-slate-500"
                             />
@@ -89,7 +97,7 @@ export default function SearchSection({ onSearch }: Props) {
 
                                 <Building2 size={16} />
 
-                                Property Type
+                                {t("propertyType")}
 
                             </label>
 
@@ -103,28 +111,28 @@ export default function SearchSection({ onSearch }: Props) {
                             >
 
                                 <option value="" className="bg-slate-900">
-                                    All
+                                    {t("all")}
                                 </option>
 
                                 <option
                                     value="Agricultural Land"
                                     className="bg-slate-900"
                                 >
-                                    Agricultural
+                                    {t("agricultural")}
                                 </option>
 
                                 <option
                                     value="Residential"
                                     className="bg-slate-900"
                                 >
-                                    Residential
+                                    {t("residential")}
                                 </option>
 
                                 <option
                                     value="Commercial"
                                     className="bg-slate-900"
                                 >
-                                    Commercial
+                                    {t("commercial")}
                                 </option>
 
                             </select>
@@ -137,7 +145,7 @@ export default function SearchSection({ onSearch }: Props) {
 
                                 <IndianRupee size={16} />
 
-                                Budget
+                                {t("budget")}
 
                             </label>
 
@@ -150,22 +158,22 @@ export default function SearchSection({ onSearch }: Props) {
                                 className="w-full bg-transparent text-white outline-none"
                             >
                                 <option value="" className="bg-slate-900">
-                                    Any Budget
+                                    {t("anyBudget")}
                                 </option>
                                 <option value="0-15" className="bg-slate-900">
-                                    Under ₹15 Lakh
+                                    {t("under15")}
                                 </option>
                                 <option value="15-30" className="bg-slate-900">
-                                    ₹15 - 30 Lakh
+                                    {t("range15to30")}
                                 </option>
                                 <option value="30-50" className="bg-slate-900">
-                                    ₹30 - 50 Lakh
+                                    {t("range30to50")}
                                 </option>
                                 <option value="50-100" className="bg-slate-900">
-                                    ₹50 Lakh - 1 Crore
+                                    {t("range50to100")}
                                 </option>
                                 <option value="100+" className="bg-slate-900">
-                                    Above ₹1 Crore
+                                    {t("above100")}
                                 </option>
                             </select>
 
@@ -177,7 +185,7 @@ export default function SearchSection({ onSearch }: Props) {
 
                                 <Ruler size={16} />
 
-                                Area
+                                {t("area")}
 
                             </label>
 
@@ -190,19 +198,19 @@ export default function SearchSection({ onSearch }: Props) {
                                 className="w-full bg-transparent text-white outline-none"
                             >
                                 <option value="" className="bg-slate-900">
-                                    Any Size
+                                    {t("anySize")}
                                 </option>
                                 <option value="0-5" className="bg-slate-900">
-                                    0 - 5 Acre
+                                    {t("area0to5")}
                                 </option>
                                 <option value="5-10" className="bg-slate-900">
-                                    5 - 10 Acre
+                                    {t("area5to10")}
                                 </option>
                                 <option value="10-20" className="bg-slate-900">
-                                    10 - 20 Acre
+                                    {t("area10to20")}
                                 </option>
                                 <option value="20+" className="bg-slate-900">
-                                    20+ Acre
+                                    {t("area20plus")}
                                 </option>
                             </select>
 
@@ -215,7 +223,7 @@ export default function SearchSection({ onSearch }: Props) {
 
                             <Search size={20} />
 
-                            Search
+                            {t("search")}
 
                         </button>
 

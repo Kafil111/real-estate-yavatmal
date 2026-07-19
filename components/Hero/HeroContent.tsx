@@ -1,6 +1,7 @@
 import Button from "@/components/ui/Button";
 import GlassCard from "@/components/ui/GlassCard";
 import StatCard from "@/components/ui/StatCard";
+import { useTranslations } from "next-intl";
 
 type HeroContentProps = {
     title: string;
@@ -13,6 +14,7 @@ export default function HeroContent({
     subtitle,
     description,
 }: HeroContentProps) {
+    const t = useTranslations("Hero");
     return (
         <div className="grid items-center gap-10 lg:grid-cols-2">
 
@@ -37,14 +39,14 @@ export default function HeroContent({
                 <div className="mt-8 flex flex-col gap-4 sm:flex-row">
 
                     <Button href="#properties">
-                        Explore Properties
+                        {t("exploreProperties")}
                     </Button>
 
                     <Button
-                        href="https://wa.me/9196575 94144"
+                        href="https://wa.me/919657594144"
                         variant="secondary"
                     >
-                        WhatsApp Us
+                        {t("whatsappUs")}
                     </Button>
 
                 </div>
@@ -55,21 +57,14 @@ export default function HeroContent({
 
                     <StatCard
                         value="500+"
-                        label="Properties"
+                        label={t("statProperties")}
                         headingLevel="h2"
                     />
 
                     <StatCard
                         value="100%"
-                        label="Verified"
+                        label={t("statVerified")}
                         headingLevel="h2"
-                    />
-
-                    <StatCard
-                        value="24/7"
-                        label="Support"
-                        headingLevel="h2"
-                        className="hidden sm:block"
                     />
 
                 </div>
@@ -85,7 +80,7 @@ export default function HeroContent({
                     <GlassCard>
 
                         <p className="text-sm uppercase tracking-widest text-amber-400">
-                            Featured Property
+                            {t("featuredProperty")}
                         </p>
 
                         <h3 className="mt-3 text-2xl font-bold text-white">
@@ -102,7 +97,7 @@ export default function HeroContent({
                             <div>
 
                                 <p className="text-xs uppercase tracking-widest text-slate-400">
-                                    Starting From
+                                    {t("startingFrom")}
                                 </p>
 
                                 <p className="text-3xl font-black text-amber-400">
@@ -112,7 +107,7 @@ export default function HeroContent({
                             </div>
 
                             <Button href="#properties">
-                                View
+                                {t("view")}
                             </Button>
 
                         </div>
@@ -124,7 +119,7 @@ export default function HeroContent({
                         <GlassCard>
 
                             <p className="text-sm text-slate-300">
-                                Residential
+                                {t("residential")}
                             </p>
 
                             <h4 className="mt-2 text-xl font-bold text-white">
@@ -132,7 +127,7 @@ export default function HeroContent({
                             </h4>
 
                             <p className="text-slate-400">
-                                Plots
+                                {t("plots")}
                             </p>
 
                         </GlassCard>
@@ -140,7 +135,7 @@ export default function HeroContent({
                         <GlassCard>
 
                             <p className="text-sm text-slate-300">
-                                Commercial
+                                {t("commercial")}
                             </p>
 
                             <h4 className="mt-2 text-xl font-bold text-white">
@@ -148,7 +143,7 @@ export default function HeroContent({
                             </h4>
 
                             <p className="text-slate-400">
-                                Locations
+                                {t("locations")}
                             </p>
 
                         </GlassCard>

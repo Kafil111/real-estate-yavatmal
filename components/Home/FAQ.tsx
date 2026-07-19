@@ -1,38 +1,20 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import { useState } from "react";
 import { Plus, Minus } from "lucide-react";
 
-const faqs = [
-    {
-        question: "Are all properties legally verified?",
-        answer:
-            "Yes. Every property listed by Real Estate Yavatmal is carefully verified before being offered to buyers.",
-    },
-    {
-        question: "Can you help with documentation?",
-        answer:
-            "Absolutely. We assist with agreements, land records, registration guidance and complete documentation.",
-    },
-    {
-        question: "Can I schedule a property visit?",
-        answer:
-            "Yes. Simply contact us through WhatsApp or phone and we'll arrange a visit at your preferred time.",
-    },
-    {
-        question: "Do you deal only in agricultural land?",
-        answer:
-            "No. We also offer residential plots, commercial properties and investment opportunities across Yavatmal.",
-    },
-    {
-        question: "Do you provide after-sale support?",
-        answer:
-            "Yes. Our relationship doesn't end after registration. We continue assisting our clients whenever required.",
-    },
-];
-
 export default function FAQ() {
+    const t = useTranslations("FAQ");
     const [open, setOpen] = useState<number | null>(0);
+
+    const faqs = [
+        { question: t("q1"), answer: t("a1") },
+        { question: t("q2"), answer: t("a2") },
+        { question: t("q3"), answer: t("a3") },
+        { question: t("q4"), answer: t("a4") },
+        { question: t("q5"), answer: t("a5") }
+    ];
 
     return (
         <section className="bg-[#07111f] py-20 md:py-28">
@@ -42,15 +24,15 @@ export default function FAQ() {
                 <div className="text-center">
 
                     <p className="text-sm font-bold uppercase tracking-[0.35em] text-amber-400">
-                        FAQ
+                        {t("faq")}
                     </p>
 
                     <h2 className="mt-5 text-4xl font-black text-white md:text-6xl">
-                        Frequently Asked Questions
+                        {t("heading")}
                     </h2>
 
                     <p className="mt-6 text-lg leading-8 text-slate-400">
-                        Everything you need to know before investing with us.
+                        {t("description")}
                     </p>
 
                 </div>
@@ -64,7 +46,7 @@ export default function FAQ() {
                         return (
 
                             <div
-                                key={faq.question}
+                                key={index}
                                 className="overflow-hidden rounded-3xl border border-white/10 bg-slate-900/70 backdrop-blur-xl"
                             >
 
@@ -97,8 +79,8 @@ export default function FAQ() {
 
                                 <div
                                     className={`grid transition-all duration-500 ${active
-                                            ? "grid-rows-[1fr]"
-                                            : "grid-rows-[0fr]"
+                                        ? "grid-rows-[1fr]"
+                                        : "grid-rows-[0fr]"
                                         }`}
                                 >
 

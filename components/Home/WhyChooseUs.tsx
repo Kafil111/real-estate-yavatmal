@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import {
     ShieldCheck,
     MapPinned,
@@ -8,34 +9,32 @@ import {
     ArrowRight,
 } from "lucide-react";
 
-const features = [
-    {
-        icon: ShieldCheck,
-        title: "100% Verified",
-        description:
-            "Every property undergoes legal verification before listing.",
-    },
-    {
-        icon: MapPinned,
-        title: "Local Expertise",
-        description:
-            "Deep knowledge of Yavatmal's fastest-growing investment zones.",
-    },
-    {
-        icon: BadgeCheck,
-        title: "Documentation",
-        description:
-            "Complete guidance from agreement to final registration.",
-    },
-    {
-        icon: Headphones,
-        title: "Lifetime Support",
-        description:
-            "We're available even after your purchase for every need.",
-    },
-];
-
 export default function WhyChooseUs() {
+    const t = useTranslations("WhyChooseUs");
+
+    const features = [
+        {
+            icon: ShieldCheck,
+            title: t("feature1Title"),
+            description: t("feature1Description"),
+        },
+        {
+            icon: MapPinned,
+            title: t("feature2Title"),
+            description: t("feature2Description"),
+        },
+        {
+            icon: BadgeCheck,
+            title: t("feature3Title"),
+            description: t("feature3Description"),
+        },
+        {
+            icon: Headphones,
+            title: t("feature4Title"),
+            description: t("feature4Description"),
+        },
+    ];
+
     return (
         <section
             id="about"
@@ -50,20 +49,18 @@ export default function WhyChooseUs() {
                     <div>
 
                         <p className="text-sm font-bold uppercase tracking-[0.35em] text-amber-400">
-                            WHY CHOOSE US
+                            {t("whyChooseUs")}
                         </p>
 
                         <h2 className="mt-6 text-4xl font-black leading-tight text-white md:text-6xl">
-                            We Don't Just Sell Property.
+                            {t("headingLine1")}
                             <span className="block text-amber-400">
-                                We Build Investments.
+                                {t("headingLine2")}
                             </span>
                         </h2>
 
                         <p className="mt-8 max-w-xl text-lg leading-8 text-slate-400">
-                            Whether you're buying your first plot or expanding
-                            your investment portfolio, we ensure every
-                            transaction is transparent, secure and rewarding.
+                            {t("description")}
                         </p>
 
                         <div className="mt-12 grid grid-cols-2 gap-6">
@@ -74,7 +71,7 @@ export default function WhyChooseUs() {
                                 </h3>
 
                                 <p className="mt-2 text-slate-400">
-                                    Properties Sold
+                                    {t("propertiesSold")}
                                 </p>
                             </div>
 
@@ -84,7 +81,7 @@ export default function WhyChooseUs() {
                                 </h3>
 
                                 <p className="mt-2 text-slate-400">
-                                    Verified Listings
+                                    {t("verifiedListings")}
                                 </p>
                             </div>
 
@@ -94,7 +91,7 @@ export default function WhyChooseUs() {
                                 </h3>
 
                                 <p className="mt-2 text-slate-400">
-                                    Client Support
+                                    {t("clientSupport")}
                                 </p>
                             </div>
 
@@ -104,7 +101,7 @@ export default function WhyChooseUs() {
                                 </h3>
 
                                 <p className="mt-2 text-slate-400">
-                                    Years Experience
+                                    {t("yearsExperience")}
                                 </p>
                             </div>
 
@@ -112,8 +109,7 @@ export default function WhyChooseUs() {
 
                         <button className="mt-12 inline-flex items-center gap-3 rounded-2xl bg-amber-400 px-8 py-4 font-bold text-slate-900 transition duration-300 hover:scale-105">
 
-                            Learn More
-
+                            {t("learnMore")}
                             <ArrowRight size={20} />
 
                         </button>

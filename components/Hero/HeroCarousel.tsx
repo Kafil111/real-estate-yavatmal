@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { useCallback, useEffect, useRef, useState } from "react";
 import type { KeyboardEvent, TouchEvent } from "react";
@@ -13,6 +14,7 @@ const AUTOPLAY_DELAY = 6000;
 const SWIPE_THRESHOLD = 50;
 
 export default function HeroCarousel() {
+    const t = useTranslations("Hero");
     const [current, setCurrent] = useState(0);
     const [isPaused, setIsPaused] = useState(false);
     const isTransitioningRef = useRef(false);
@@ -137,7 +139,7 @@ export default function HeroCarousel() {
                     >
                         <Image
                             src={slide.image}
-                            alt={slide.title}
+                            alt={t(slide.titleKey)}
                             fill
                             priority={index === 0}
                             sizes="100vw"
@@ -150,9 +152,9 @@ export default function HeroCarousel() {
                         <div className="relative z-10 flex h-full items-start">
                             <div className="mx-auto w-full max-w-7xl px-6 pt-32">
                                 <HeroContent
-                                    title={slide.title}
-                                    subtitle={slide.subtitle}
-                                    description={slide.description}
+                                    title={t(slide.titleKey)}
+                                    subtitle={t(slide.subtitleKey)}
+                                    description={t(slide.descriptionKey)}
                                 />
                             </div>
                         </div>
@@ -169,7 +171,7 @@ export default function HeroCarousel() {
             />
 
             <p className="sr-only" aria-live="polite">
-                Slide {current + 1} of {heroSlides.length}: {heroSlides[current]?.title}
+                Slide {current + 1} of {heroSlides.length}: {heroSlides[current] ? t(heroSlides[current].titleKey) : ""}
             </p>
         </section>
     );

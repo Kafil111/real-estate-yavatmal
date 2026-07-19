@@ -1,5 +1,7 @@
 "use client";
 
+import { useTranslations } from "next-intl";
+
 import { ArrowRight } from "lucide-react";
 
 import PropertyCard from "@/components/Properties/PropertyCard";
@@ -18,6 +20,7 @@ type Props = {
 export default function FeaturedProperties({
     filters,
 }: Props) {
+    const t = useTranslations("FeaturedProperties");
     const filteredProperties = usePropertyFilters(
         properties,
         filters
@@ -33,16 +36,15 @@ export default function FeaturedProperties({
                 <div className="mx-auto mb-16 max-w-3xl text-center">
 
                     <p className="mb-4 text-sm font-bold uppercase tracking-[0.35em] text-amber-400">
-                        FEATURED PROPERTIES
+                        {t("featuredProperties")}
                     </p>
 
                     <h2 className="text-5xl font-black text-white md:text-6xl">
-                        Discover Your Next Investment
+                        {t("discoverNextInvestment")}
                     </h2>
 
                     <p className="mt-6 text-xl text-slate-400">
-                        Carefully selected premium agricultural and residential
-                        properties across Yavatmal.
+                        {t("description")}
                     </p>
 
                 </div>
@@ -51,7 +53,7 @@ export default function FeaturedProperties({
 
                     <p className="rounded-full border border-slate-300 bg-white px-6 py-2 text-sm font-semibold text-black">
 
-                        {filteredProperties.length} Properties Found
+                        {filteredProperties.length} {t("propertiesFound")}
 
                     </p>
 
@@ -61,11 +63,11 @@ export default function FeaturedProperties({
                     <div className="rounded-3xl border border-white/10 bg-slate-900 p-20 text-center">
 
                         <h3 className="text-3xl font-bold text-white">
-                            No Properties Found
+                            {t("noPropertiesFound")}
                         </h3>
 
                         <p className="mt-4 text-slate-400">
-                            Try changing your search filters.
+                            {t("tryChangingFilters")}
                         </p>
 
                     </div>
@@ -88,7 +90,7 @@ export default function FeaturedProperties({
 
                     <button className="inline-flex items-center gap-3 rounded-2xl border border-amber-400 px-8 py-4 font-semibold text-amber-400 transition hover:bg-amber-400 hover:text-slate-900">
 
-                        View All Properties
+                        {t("viewAllProperties")}
 
                         <ArrowRight size={20} />
 
