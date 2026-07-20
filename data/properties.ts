@@ -49,8 +49,8 @@ export const properties: Property[] = [
             Highway: "3 km",
         },
         contact: {
-            phone: "8793398909",
-            whatsapp: "918793398909",
+            phone: "96575 94144",
+            whatsapp: "9196575 94144",
         },
     },
     {
@@ -100,8 +100,8 @@ export const properties: Property[] = [
             Highway: "0 km",
         },
         contact: {
-            phone: "8793398909",
-            whatsapp: "918793398909",
+            phone: "96575 94144",
+            whatsapp: "9196575 94144",
         },
     },
     {
@@ -151,8 +151,8 @@ export const properties: Property[] = [
             Hospital: "2 km",
         },
         contact: {
-            phone: "8793398909",
-            whatsapp: "918793398909",
+            phone: "96575 94144",
+            whatsapp: "9196575 94144",
         },
     },
     {
@@ -201,8 +201,8 @@ export const properties: Property[] = [
             Yavatmal: "8 km",
         },
         contact: {
-            phone: "8793398909",
-            whatsapp: "918793398909",
+            phone: "96575 94144",
+            whatsapp: "9196575 94144",
         },
     },
     {
@@ -251,8 +251,8 @@ export const properties: Property[] = [
             Highway: "1 km",
         },
         contact: {
-            phone: "8793398909",
-            whatsapp: "918793398909",
+            phone: "96575 94144",
+            whatsapp: "9196575 94144",
         },
     },
     {
@@ -302,8 +302,8 @@ export const properties: Property[] = [
             Market: "1.5 km",
         },
         contact: {
-            phone: "8793398909",
-            whatsapp: "918793398909",
+            phone: "96575 94144",
+            whatsapp: "9196575 94144",
         },
     },
 ];
