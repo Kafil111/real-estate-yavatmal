@@ -45,12 +45,12 @@ export default function ContactSection() {
                             {
                                 icon: Phone,
                                 title: t("callUs"),
-                                value: "+91 87933 98909",
+                                value: "+91 9657594144",
                             },
                             {
                                 icon: MessageCircle,
                                 title: t("whatsapp"),
-                                value: "+91 87933 98909",
+                                value: "+91 9657594144",
                             },
                             {
                                 icon: MapPin,

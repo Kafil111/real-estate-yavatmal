@@ -73,18 +73,20 @@ export default function Navbar() {
                                 {link.name}
                             </a>
                         ))}
-
-                        <select
-                            aria-label={tLang("language")}
-                            value={locale}
-                            onChange={(e) => switchLocale(e.target.value)}
-                            className="rounded-lg border border-white/20 bg-slate-800 px-3 py-2 text-sm text-white outline-none"
-                        >
-                            <option value="en">EN</option>
-                            <option value="hi">हिंदी</option>
-                            <option value="mr">मराठी</option>
-                        </select>
                     </div>
+
+                    {/* Language Switcher — always visible, mobile and desktop */}
+
+                    <select
+                        aria-label={tLang("language")}
+                        value={locale}
+                        onChange={(e) => switchLocale(e.target.value)}
+                        className="rounded-lg border border-white/20 bg-slate-800 px-2 py-1.5 text-xs text-white outline-none sm:px-3 sm:py-2 sm:text-sm"
+                    >
+                        <option value="en">EN</option>
+                        <option value="hi">हिं</option>
+                        <option value="mr">मर</option>
+                    </select>
 
                     {/* Mobile Menu Button */}
 
@@ -115,34 +117,27 @@ export default function Navbar() {
 
                 {/* Mobile Dropdown Panel */}
 
-                {isMenuOpen && (
-                    <div className="mt-2 rounded-2xl border border-white/10 bg-slate-900/90 backdrop-blur-2xl p-4 shadow-2xl md:hidden">
-                        <div className="flex flex-col gap-1">
-                            {links.map((link) => (
-                                <a
-                                    key={link.name}
-                                    href={link.href}
-                                    className="text-lg font-medium text-slate-200 transition-all duration-300 hover:text-amber-400 hover:-translate-y-0.5"
-                                >
-                                    {link.name}
-                                </a>
-                            ))}
+                {
+                    isMenuOpen && (
+                        <div className="mt-2 rounded-2xl border border-white/10 bg-slate-900/90 backdrop-blur-2xl p-4 shadow-2xl md:hidden">
+                            <div className="flex flex-col gap-1">
+                                {links.map((link) => (
 
-                            <select
-                                aria-label={tLang("language")}
-                                value={locale}
-                                onChange={(e) => switchLocale(e.target.value)}
-                                className="mt-2 rounded-lg border border-white/20 bg-slate-800 px-3 py-3 text-base text-white outline-none"
-                            >
-                                <option value="en">English</option>
-                                <option value="hi">हिंदी</option>
-                                <option value="mr">मराठी</option>
-                            </select>
-                        </div>
-                    </div>
-                )}
+                                    <a
+                                        key={link.name}
+                                        href={link.href}
+                                        onClick={() => setIsMenuOpen(false)}
+                                        className="rounded-lg px-3 py-3 text-base font-medium text-slate-200 transition hover:bg-white/5 hover:text-amber-400"
+                                    >
+                                        {link.name}
+                                    </a>
+                                ))}
+                            </div>
+                        </div >
+                    )
+                }
 
-            </div>
-        </header>
+            </div >
+        </header >
     );
 }
